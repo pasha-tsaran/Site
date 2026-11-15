@@ -1,0 +1,33 @@
+{
+  "fps": 30,
+  "frameCount": 570,
+  "durationSeconds": 19,
+  "width": 1280,
+  "height": 720,
+  "chapters": [
+    {
+      "start": 0,
+      "end": 2,
+      "type": "photos",
+      "count": 10
+    },
+    {
+      "start": 2,
+      "end": 8,
+      "type": "video",
+      "source": "construction-master.mp4"
+    },
+    {
+      "start": 8,
+      "end": 11,
+      "type": "photos",
+      "count": 15
+    },
+    {
+      "start": 11,
+      "end": 19,
+      "type": "video",
+      "source": "orbit-master.mp4"
+    }
+  ]
+}

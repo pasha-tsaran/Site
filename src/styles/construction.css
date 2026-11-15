@@ -1,0 +1,66 @@
+/* The construction catalogue shares the first page's paper, olive and photographs. */
+body.construction-page{background:var(--paper);color:var(--olive)}
+body.construction-page .site-header{color:var(--olive);background:var(--paper)}
+body.construction-page .site-header .nav-link{border-color:var(--olive);font-size:13px}
+body.construction-page .site-header .nav-link:not([aria-current="page"]){--motion-fill:var(--olive);--motion-text:var(--paper)}
+body.construction-page .site-header .nav-link[aria-current="page"]{background:var(--olive);color:var(--paper);--motion-fill:var(--ink);--motion-text:var(--paper)}
+.construction-main{padding:150px var(--gutter) 100px;min-height:80svh}
+.construction-intro{display:flex;justify-content:space-between;align-items:end;gap:36px;margin:20px 0 64px}
+.construction-intro h1{font-family:var(--display);font-size:clamp(54px,7.2vw,138px);font-weight:800;line-height:.94;letter-spacing:-.055em;margin:0}
+.construction-intro-copy{font-size:clamp(16px,1.5vw,24px);line-height:1.35;letter-spacing:-.025em;margin:0 0 3px;flex-shrink:0}
+.construction-catalog-top{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:25px;font-size:15px;line-height:1.4}
+.construction-catalog-top p{margin:0}
+.construction-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:50px 24px}
+.construction-card{min-width:0;animation:construction-enter .65s both;animation-delay:calc(var(--card-index,0) * 70ms)}
+.construction-card-link{display:block}
+.construction-card-photo{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:24px;background:var(--olive)}
+.construction-card-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 32%;transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.construction-card-kind{position:absolute;left:16px;top:16px;background:var(--paper);color:var(--olive);padding:8px 12px;border-radius:30px;font-size:13px;line-height:1}
+.construction-card-arrow{position:absolute;right:16px;bottom:16px;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--paper);color:var(--olive);font-size:24px;transition:background .2s,color .2s,transform .25s}
+.construction-card-link:hover .construction-card-photo img,.construction-card-link:focus-visible .construction-card-photo img{transform:scale(1.045)}
+.construction-card-link:hover .construction-card-arrow,.construction-card-link:focus-visible .construction-card-arrow{background:var(--olive);color:var(--paper);transform:rotate(45deg)}
+.construction-card-copy{padding:20px 0 0}
+.construction-card-copy h2{font-size:clamp(22px,1.9vw,34px);font-weight:400;line-height:1.1;letter-spacing:-.035em;margin:0;min-height:2.2em}
+.construction-card-meta{display:flex;flex-wrap:wrap;gap:8px;font-size:16px;line-height:1.5;margin:12px 0 0}
+.construction-card-price{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px 16px;margin:16px 0 0;font-size:clamp(19px,1.6vw,28px);line-height:1.3;letter-spacing:-.025em}
+.construction-card-price span{font-size:14px;letter-spacing:0}
+.construction-demo-note{margin:50px 0 0;font-size:16px;line-height:1.5;max-width:64ch}
+.construction-footer{display:grid;grid-template-columns:1fr auto;gap:34px;align-items:center;padding:48px var(--gutter) 28px;background:var(--olive);color:var(--paper)}
+.construction-footer-logo{font-family:var(--display);font-size:clamp(28px,3.2vw,56px);font-weight:800;line-height:1;letter-spacing:-.05em}
+.construction-footer p{font-size:15px;line-height:1.4;margin:15px 0 0}
+.construction-footer>a{font-size:16px}
+.construction-footer-demo{grid-column:1/-1;font-size:13px;line-height:1.4}
+.construction-back{display:inline-flex;align-items:center;gap:14px;font-size:15px;line-height:1.5;margin-bottom:36px}
+.construction-back:hover,.project-related-heading>a:hover{text-decoration:underline;text-underline-offset:5px}
+.project-main{padding-top:122px}
+.project-layout{display:grid;grid-template-columns:minmax(0,1.13fr) minmax(0,1fr);gap:clamp(32px,5vw,100px);align-items:start}
+.project-photo{position:sticky;top:110px;margin:0;border-radius:28px;overflow:hidden;background:var(--olive);height:calc(100svh - 140px);height:calc(100dvh - 140px);min-height:560px;max-height:850px}
+.project-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 28%}
+.project-copy{padding:6px 0 0}
+.project-copy h1{font-family:var(--display);font-size:clamp(38px,3.7vw,76px);font-weight:800;line-height:.99;letter-spacing:-.045em;text-transform:uppercase;margin:0}
+.project-description{font-size:17px;line-height:1.55;letter-spacing:-.015em;margin:25px 0 0;max-width:56ch}
+.project-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:34px 0 0}
+.project-facts>div{min-width:0}
+.project-facts dt{font-size:13px;line-height:1.4;margin-bottom:7px}
+.project-facts dd{font-size:clamp(20px,1.8vw,30px);line-height:1.2;letter-spacing:-.025em;margin:0;overflow-wrap:break-word}
+.project-price{margin:36px 0 24px}
+.project-price>span{font-size:13px;line-height:1.4}
+.project-price p{font-size:clamp(32px,3vw,54px);line-height:1.1;letter-spacing:-.04em;margin:10px 0 0}
+.project-cta{display:inline-flex;justify-content:space-between;gap:44px;align-items:center;padding:15px 20px;min-height:50px;background:var(--olive);color:var(--paper);border:1px solid var(--olive);border-radius:2px;font-size:15px}
+body.construction-page .project-cta.has-motion[data-motion-button],body.construction-page .project-cta.has-motion[data-motion-button]:hover{background:var(--olive);color:var(--paper);--motion-fill:var(--ink);--motion-text:var(--paper)}
+.project-demo-note{font-size:12px;line-height:1.5;margin:15px 0 0;max-width:46ch}
+.project-related{margin-top:110px}
+.project-related-heading{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:32px}
+.project-related-heading>h2{font-size:clamp(30px,3vw,54px);line-height:1.1;letter-spacing:-.04em;font-weight:400;margin:0}
+.project-related-heading>a{font-size:15px}
+.project-not-found{min-height:80svh;display:flex;flex-direction:column;justify-content:center;align-items:start;gap:30px}
+.project-not-found h1{font-size:clamp(36px,6vw,90px);line-height:1;letter-spacing:-.05em;margin:0}
+@keyframes construction-enter{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1100px){.construction-intro{gap:24px}.construction-intro-copy{font-size:16px}.construction-grid{gap:40px 20px}.project-layout{gap:30px}.project-copy h1{font-size:4.2vw}.project-description{font-size:16px}.project-facts{gap:20px}.project-facts dd{font-size:21px}}
+@media(max-width:900px){.construction-main{padding-top:130px}.construction-intro{margin-top:20px;display:block}.construction-intro h1{font-size:8.7vw}.construction-intro-copy{margin-top:24px}.construction-intro-copy br{display:none}.construction-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.project-main{padding-top:115px}.project-layout{grid-template-columns:1fr}.project-photo{position:relative;top:auto;height:auto;min-height:0;max-height:none;aspect-ratio:4/3}.project-copy{padding-top:4px}.project-copy h1{font-size:7vw;max-width:780px}.project-description{max-width:65ch}.project-facts{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}.project-related{margin-top:80px}}
+@media(max-width:700px){.site-header nav{gap:4px}.site-header .nav-link{font-size:9px;padding:8px 9px}.site-header .nav-dialog-label{display:none}.site-header button.nav-link{min-width:32px;min-height:30px}.construction-main{padding-bottom:65px}.construction-intro{margin-bottom:42px}.construction-kicker{font-size:14px;margin-bottom:16px}.construction-catalog-top{font-size:12px;gap:12px}.construction-footer{gap:30px 16px;padding-top:36px}.construction-footer>a{font-size:13px}.construction-footer p{font-size:13px}.construction-footer-demo{font-size:11px}.project-copy h1{font-size:9vw}.project-facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}.project-facts dd{font-size:22px}.project-related-heading>h2{font-size:30px}.project-related-heading>a{font-size:12px}.construction-back{font-size:14px;margin-bottom:24px}}
+@media(max-width:600px){.construction-grid{grid-template-columns:1fr;gap:38px}.construction-card-photo{border-radius:22px}.construction-card-copy h2{font-size:25px;min-height:0}.construction-card-copy{padding-top:17px}.construction-card-meta{margin-top:11px}.construction-card-price{font-size:23px;margin-top:14px}.construction-demo-note{margin-top:35px}.project-photo{aspect-ratio:1.05;border-radius:24px}.project-description{font-size:16px;line-height:1.5}.project-cta{width:100%;gap:24px}.project-related{margin-top:70px}}
+@media(max-width:360px){.site-header .nav-link{padding:8px 7px}.site-header .wordmark{font-size:28px}}
+@media(max-width:700px){body.construction-page .site-header .wordmark{flex-shrink:0}body.construction-page .site-header nav{flex:1;min-width:0;flex-wrap:wrap;justify-content:flex-end;margin-left:16px}.construction-catalog-top{font-size:13px}.construction-footer-demo{font-size:13px}}
+@media(max-width:360px){body.construction-page .site-header .nav-link{padding:8px 6px}.construction-main,.project-main{padding-top:145px}}
+@media(prefers-reduced-motion:reduce){.construction-card{animation:none}.construction-card-photo img,.construction-card-arrow{transition:none}.construction-card-link:hover img,.construction-card-link:focus-visible img{transform:none}}

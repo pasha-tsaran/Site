@@ -1,0 +1,317 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#efe6cf"><meta name="description" content="Частные дома и индивидуальная архитектура. Пространство, которое начинается с вас."><title>ДОМ | Архитектура жизни</title><link rel="icon" href="./assets/favicon.svg" type="image/svg+xml"><style>.page-loading{display:none;position:fixed;inset:0;z-index:100;background:#efe6cf;color:#626747;padding:25px clamp(20px,2.1vw,44px);font-family:Arial,sans-serif}
+.page-pending .page-loading{display:flex;flex-direction:column}
+.page-pending #app{visibility:hidden}
+.loading-header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.loading-brand{font-size:36px;font-weight:800;letter-spacing:-.08em;line-height:1}
+.loading-nav{display:flex;gap:10px}
+.page-loading i{display:block;background:#62674714;border-radius:2px}
+.loading-nav i{width:100px;height:29px;border-radius:30px}
+.loading-content{display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:center;flex:1;padding:70px 0 40px}
+.loading-heading{display:grid;gap:18px}
+.loading-heading i{height:clamp(45px,7vw,125px)}
+.loading-heading i:last-child{width:78%}
+.loading-media{height:min(53vh,560px);background:#6267470c;border-radius:3px}
+.page-loading--home .loading-content{grid-template-columns:1fr;position:relative}
+.page-loading--home .loading-media{position:absolute;inset:50px 0 20px;height:auto}
+.page-loading--home .loading-heading{z-index:1;width:75%;align-self:end;margin-bottom:70px}
+.page-loading--home .loading-heading i{background:#62674718}
+.loading-caption{font-size:13px;line-height:1.5;padding-bottom:10px}
+@media(max-width:700px){.loading-header{align-items:flex-start}.loading-nav{gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:190px}.loading-nav i{width:75px;height:28px}.loading-brand{font-size:31px}.loading-content{grid-template-columns:1fr;gap:35px;padding-top:75px}.loading-media{height:32vh}.page-loading--home .loading-heading{width:100%;margin-bottom:55px}.loading-caption{font-size:12px}}
+</style><script>(function () {
+  document.documentElement.classList.add('page-pending');
+  function release() {
+    clearTimeout(window.__pageLoadingTimeout);
+    document.documentElement.classList.remove('page-pending');
+    document.getElementById('page-loading')?.remove();
+    document.getElementById('app')?.setAttribute('aria-busy','false');
+  }
+  function firstImage() { return document.getElementById('app')?.querySelector('img[fetchpriority="high"], main img:not([loading="lazy"])'); }
+  window.__pageLoadingTimeout=setTimeout(release,8000);
+  // Server-rendered content can be shown before the interactive module graph is downloaded.
+  document.addEventListener?.('load',event=>{ if(event.target === firstImage()) release(); },true);
+  document.addEventListener?.('DOMContentLoaded',()=>{
+    if(document.getElementById('app')?.dataset?.page && (!firstImage() || firstImage().complete)) release();
+  },{once:true});
+})();</script><link rel="preload" as="image" href="./assets/hero-poster.jpg"><link rel="stylesheet" href="./assets/lenis-1.3.26.css"><link rel="preload" as="fetch" href="./assets/streams/hero-ffd907f9eca3/init.mp4" crossorigin fetchpriority="high"><link rel="preload" as="fetch" href="./assets/streams/hero-ffd907f9eca3/chunk-001.m4s" crossorigin fetchpriority="high"><link rel="modulepreload" href="./app/components/scroll-video.js"><link rel="stylesheet" href="./app/styles/site.css"><link rel="stylesheet" href="./app/styles/home.css"><style>/* Shared finishing rules, placed after route styles in the generated document. */
+html,body{scrollbar-width:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
+.mobile-menu-toggle,.models-mobile{display:none}
+main,section,article,figure{min-width:0}
+.construction-card-copy{padding-top:16px}
+.construction-card-copy h2{min-height:0;line-height:1.12}
+.construction-card-meta{margin-top:9px;line-height:1.35}
+.construction-card-price{margin-top:10px}
+.construction-grid{row-gap:42px}
+
+.about-history{gap:6vw;margin:88px 0}
+.about-history-intro{display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+.about-history h2{font-size:clamp(34px,3.8vw,70px)}
+.about-history-intro>div>p{max-width:38ch;font-size:18px}
+.about-history-context h3{font-size:clamp(25px,2vw,36px);font-weight:400;line-height:1.12;letter-spacing:-.035em;margin:0 0 20px}
+.about-history-context p{max-width:46ch;font-size:17px;line-height:1.55;margin:0 0 18px}
+.about-history-context a{font-size:16px;display:inline-flex;gap:24px;align-items:center;margin-top:4px}
+.about-timeline{gap:0}
+.about-timeline li{position:relative;grid-template-columns:80px 16px minmax(0,1fr);gap:22px;padding-bottom:36px}
+.about-timeline li:last-child{padding-bottom:0}
+.about-timeline li:not(:last-child)::after{content:"";position:absolute;width:1px;background:#62674755;left:109.5px;top:14px;bottom:-14px}
+.about-timeline-dot{position:relative;z-index:1;display:block;width:12px;height:12px;margin:7px 0 0 2px;border-radius:50%;background:var(--olive);box-shadow:0 0 0 5px var(--paper)}
+.about-year{font-size:21px;line-height:1.3}
+.about-year small{display:block;font-size:13px;margin-top:6px;letter-spacing:0}
+.about-timeline h3{font-size:clamp(22px,1.9vw,30px);margin-bottom:12px}
+.about-timeline p{font-size:16px;line-height:1.55;max-width:54ch}
+.about-materials{margin:56px 0 80px}
+.about-materials img{aspect-ratio:auto;height:clamp(320px,calc(100svh - 230px),680px);object-position:50% 37%}
+.about-director{align-items:stretch;gap:5vw;margin-bottom:85px}
+.about-director-photo{position:relative;min-height:0}
+.about-director-photo img{position:absolute;inset:0;height:100%;width:100%;aspect-ratio:auto;object-position:50% 24%}
+.about-director-copy h2{font-size:clamp(38px,4.1vw,78px);line-height:.98}
+.about-director-copy p{font-size:clamp(16px,1.1vw,18px);line-height:1.48;margin-bottom:16px;max-width:56ch}
+.about-director-role{margin:14px 0 22px!important}
+.about-director-link{margin-top:5px}
+.about-director-copy .about-portrait-note{margin:14px 0 0;font-size:12px}
+
+@media(max-width:840px){
+  :root{--gutter:20px}
+  body .site-header{padding:14px var(--gutter);min-height:74px;align-items:center;background:var(--paper)!important;color:var(--olive)!important}
+  .site-header .wordmark{font-size:32px;flex-shrink:0}
+  .site-header .brand-caption{display:none}
+  .site-header .mobile-menu-toggle:not([hidden]){display:inline-flex;align-items:center;gap:16px;min-height:44px;padding:10px 14px;border:1px solid var(--olive);border-radius:24px;background:transparent;color:var(--olive);font-size:14px}
+  .mobile-menu-toggle>span{width:18px;height:10px;border-block:1px solid currentColor;transition:transform .2s}
+  .menu-open .mobile-menu-toggle>span{transform:rotate(90deg)}
+  body .site-header[data-menu-ready] nav{position:absolute;inset:calc(100% - 1px) 0 auto;margin:0;padding:18px var(--gutter) 24px;display:grid;gap:10px;background:var(--paper);border-bottom:1px solid #62674755}
+  body .site-header[data-menu-ready] nav .nav-link{display:flex;align-items:center;justify-content:center;min-height:46px;width:100%;margin:0;padding:12px 16px;font-size:17px;line-height:1.2;border-color:var(--olive);color:var(--olive)}
+  body .site-header[data-menu-ready] nav .nav-link[aria-current="page"]{color:var(--paper);background:var(--olive)}
+  body .site-header[data-menu-ready] nav .nav-dialog-label{display:inline}
+  .construction-main,.project-main,.about-main,.calculator-main,.legal-main{padding-top:112px}
+  .construction-intro,.about-intro,.calculator-intro{margin-top:0}
+  .hero-eyebrow{top:104px}
+}
+
+@media(max-width:700px){
+  html{scroll-padding-top:88px}
+  img,video{max-width:100%}
+  h1,h2,h3{overflow-wrap:break-word}
+  .construction-intro h1{font-size:clamp(25px,7.5vw,52px);line-height:1;max-width:100%;letter-spacing:-.055em}
+  .calculator-intro h1{font-size:clamp(29px,9vw,62px);line-height:1;max-width:100%}
+  .about-intro h1{font-size:clamp(33px,10vw,66px);line-height:1;max-width:100%}
+  .construction-intro-copy{margin-top:20px;max-width:32ch;line-height:1.45}
+  .construction-intro{margin-bottom:32px}
+  .construction-card-copy h2{font-size:25px}
+  .construction-card-copy{padding-top:14px}
+  .construction-card-meta{font-size:15px;margin-top:8px}
+  .construction-card-price{font-size:24px;margin-top:9px}
+  .construction-card-price span{font-size:13px}
+  .construction-footer{grid-template-columns:1fr;gap:24px}
+  .construction-footer>a{width:max-content;max-width:100%;font-size:15px}
+  .construction-footer-logo{font-size:36px}
+  .project-copy h1{font-size:clamp(30px,8.7vw,52px);line-height:1.05}
+  .project-photo{min-height:0;aspect-ratio:1.2}
+  .project-related-heading{align-items:start;flex-direction:column;gap:16px}
+  .about-intro{gap:24px}
+  .about-intro p{font-size:17px;line-height:1.5}
+  .about-hero-photo{aspect-ratio:1.35}
+  .about-hero-photo figcaption{font-size:12px;line-height:1.35}
+  .about-history{gap:34px;margin:56px 0}
+  .about-history h2{font-size:clamp(34px,9.3vw,56px)}
+  .about-history-intro{gap:28px}
+  .about-history-intro>div>p{font-size:17px;margin-top:20px}
+  .about-history-context h3{font-size:27px}
+  .about-history-context p{font-size:16px;margin:0 0 16px;max-width:none}
+  .about-timeline li{grid-template-columns:61px 14px minmax(0,1fr);gap:13px;padding-bottom:30px}
+  .about-timeline li:not(:last-child)::after{left:80px;top:13px;bottom:-13px}
+  .about-timeline-dot{width:10px;height:10px;margin-left:2px}
+  .about-year{font-size:17px}
+  .about-timeline h3{font-size:22px;line-height:1.15;margin-bottom:10px}
+  .about-timeline p{font-size:15px;line-height:1.55}
+  .about-materials{gap:14px;margin:44px 0 56px}
+  .about-materials img{height:clamp(230px,43svh,390px);object-position:50% 35%}
+  .about-materials figcaption{font-size:13px;line-height:1.4}
+  .about-director{gap:24px;margin-bottom:58px}
+  .about-director-photo img{position:static;height:auto;aspect-ratio:1.25;object-fit:cover;object-position:50% 21%}
+  .about-director-copy h2{font-size:clamp(34px,10.5vw,60px)}
+  .about-director-copy p{font-size:16px;line-height:1.55}
+  .about-office h2{font-size:clamp(32px,9vw,55px)}
+  .about-office-contacts a{overflow-wrap:anywhere}
+  .calc-numbers,.calc-floor-grid{gap:26px 18px}
+  .calc-number-field>label{min-height:0}
+  .calc-total{font-size:clamp(29px,8.5vw,42px)}
+  .calc-result-body{padding:22px 18px}
+  .calc-price-table td{white-space:normal}
+  .calc-price-table th,.calc-price-table td{overflow-wrap:break-word}
+  .calc-comparison-wrap{overflow-x:auto;overscroll-behavior-x:contain}
+  .calc-price-group dl>div{grid-template-columns:minmax(0,1fr) minmax(0,.8fr)}
+  .calc-price-group dd{white-space:normal;font-size:18px;overflow-wrap:anywhere}
+  .calc-mobile-summary{padding:14px 20px max(14px,env(safe-area-inset-bottom));min-height:66px}
+  .legal-main h1{font-size:clamp(27px,8.3vw,48px)}
+  .legal-main h2{font-size:25px}
+  body .contact-dialog{width:calc(100% - 24px);max-height:calc(100dvh - 24px);padding:32px 22px}
+  body .contact-dialog h2,body .contact-dialog .contact-success h2{font-size:clamp(32px,8.6vw,48px);line-height:1.05}
+  .contact-success-message{font-size:18px}
+  .contact-dialog .contact-calculation dl>div{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .contact-dialog input,.contact-dialog textarea{font-size:16px}
+  .dream-gallery{padding-top:98px}
+  .dream-stage h2{font-size:clamp(34px,10.3vw,64px);white-space:normal}
+  .dream-description{font-size:15px}
+  .dream-figure{width:100%;max-width:540px}
+  .scene-note p{font-size:clamp(31px,9vw,49px)}
+  .scene-ending p{font-size:clamp(55px,18vw,110px)}
+  .hero-title{bottom:132px}
+  .hero-title h1{font-size:clamp(34px,10.2vw,68px)}
+  .hero-bottom{bottom:28px}
+  .models-section{height:auto!important}
+  .models-stage{position:relative;height:auto;min-height:0;padding:96px var(--gutter) 24px}
+  .models-stage>.models-photo,.models-stage>.models-list,.models-stage>.models-top,.models-stage>.models-bottom{display:none}
+  .models-mobile{display:block;outline-offset:4px}
+  .models-mobile-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:18px;line-height:1.2}
+  .models-mobile-heading output{font-size:13px;font-variant-numeric:tabular-nums}
+  .models-mobile-window{position:relative;height:clamp(330px,calc(100svh - 225px),680px);overflow:hidden;touch-action:pan-y;isolation:isolate}
+  .model-mobile-card{position:absolute;inset:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:16px;min-width:0;will-change:transform}
+  .model-mobile-photo{display:block;min-height:0;overflow:hidden;border-radius:22px;background:#555a3d}
+  .model-mobile-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 32%;display:block;user-select:none;-webkit-user-drag:none}
+  .model-mobile-copy h3{font-family:var(--display);font-size:clamp(23px,6.3vw,35px);font-weight:800;line-height:1.05;letter-spacing:-.035em;text-transform:uppercase;margin:0}
+  .model-mobile-copy p{font-size:13px;line-height:1.4;margin:10px 0 14px;max-width:36ch}
+  .model-mobile-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;line-height:1.4}
+  .model-mobile-actions button{font-size:13px;border:1px solid var(--paper);background:transparent;color:inherit;padding:10px 12px;border-radius:2px;min-height:42px}
+  .models-mobile-controls{display:grid;grid-template-columns:44px 1fr 44px;gap:14px;align-items:center;margin-top:16px;font-size:12px;text-align:center}
+  .models-mobile-controls button{width:44px;height:44px;border:1px solid #efe6cf90;background:transparent;color:var(--paper);font-size:24px;border-radius:50%}
+  .models-mobile-controls button:disabled{opacity:.3;cursor:default}
+  .site-footer.dream-footer{height:auto;margin-top:0}
+  .footer-stage{position:relative;height:auto;min-height:0;display:flex;flex-direction:column;gap:34px;padding:46px var(--gutter) 26px;overflow:hidden}
+  .footer-top{position:relative;order:0;opacity:1!important;transform:none!important}
+  .footer-message{position:static;order:1;opacity:1!important;transform:none!important;text-align:center}
+  .footer-split{position:static;order:2;justify-content:space-between;font-size:clamp(17px,5.5vw,36px);gap:12px}
+  .footer-word{transform:none!important}
+  .footer-bottom{position:static;order:3;gap:16px}
+  .site-footer .footer-slogan{font-size:clamp(28px,8vw,44px)}
+}
+@media(max-width:420px){
+  :root{--gutter:18px}
+  .calc-numbers,.calc-floor-grid{grid-template-columns:1fr}
+  .calc-option-group>.calc-number-field,.calc-storeys>.calc-number-field{max-width:none}
+  .calc-number-box{padding:15px}
+  .calc-number-box input{font-size:32px}
+  .calc-number-field>label{font-size:15px}
+  .calc-mobile-summary>span{font-size:20px}
+  .calc-mobile-summary>a{font-size:12px}
+  .about-materials{gap:12px}
+  .model-mobile-actions{font-size:12px;gap:8px}
+  .model-mobile-actions button{font-size:12px;padding-inline:10px}
+  .construction-card-price{gap:8px 14px}
+}
+@media(prefers-reduced-motion:reduce){.mobile-menu-toggle>span{transition:none}.model-mobile-card{will-change:auto}}
+</style><script src="./content.js"></script></head><body class=""><div class="page-loading page-loading--home" id="page-loading" role="status" aria-label="Загружаем сайт"><div class="loading-header"><span class="loading-brand" aria-hidden="true">ДОМ.</span><div class="loading-nav" aria-hidden="true"><i></i><i></i><i></i></div></div><div class="loading-content" aria-hidden="true"><div class="loading-heading"><i></i><i></i></div><div class="loading-media"></div></div><span class="loading-caption">Готовим пространство для вас</span></div><div id="app" data-page="home" aria-busy="true">
+    <a class="skip-link" href="#architecture">Перейти к содержанию</a>
+    <header class="site-header">
+    <a class="wordmark" href="/" aria-label="Дом на главную">ДОМ.<span class="brand-caption">Архитектура жизни</span></a>
+    <button class="mobile-menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-no-motion hidden>Меню <span aria-hidden="true"></span></button>
+    <nav id="site-navigation" aria-label="Главная навигация"><a class="nav-link" href="/" aria-current="page">Главная</a><a class="nav-link" href="/construction/">Строительство</a><a class="nav-link" href="/calculator/">Калькулятор</a><button class="nav-link" data-dialog="consultation"><span class="nav-dialog-label">Обсудить дом</span><span aria-hidden="true"> ↗</span></button><a class="nav-link" href="/about/">О нас</a></nav>
+  </header>
+    <main id="top">
+      <section class="hero-journey" aria-label="Путешествие по дому" data-journey>
+        <div class="hero-stage">
+          <img class="hero-poster" src="./assets/hero-poster.jpg" alt="Современный дом: каменный фасад, деревянные двери и сад у входа" fetchpriority="high">
+          <video class="hero-video" muted playsinline preload="auto" poster="./assets/hero-poster.jpg" aria-hidden="true" tabindex="-1"></video>
+          <div class="hero-shade" aria-hidden="true"></div>
+          <div class="hero-eyebrow"><span class="status-dot"></span>Частные дома Индивидуальный подход</div>
+          <div class="hero-title" data-scene="opening">
+            <h1><span class="title-first">ДОМ</span><span class="title-second">НАЧИНАЕТСЯ</span><span class="title-third">С ВАС</span></h1>
+          </div>
+          <div class="scene-note" data-scene="inside" hidden>
+            <span class="eyebrow">Внутри ваша жизнь</span>
+            <p>Больше света<br>Больше вашего</p>
+          </div>
+          <div class="scene-ending" data-scene="ending" hidden>
+            <span class="eyebrow">От первого шага до своего дома</span>
+            <p>ВЫ ДОМА</p>
+            <button class="light-button" data-dialog="consultation">Давайте начнём <span aria-hidden="true">↗</span></button>
+          </div>
+          <div class="hero-bottom">
+            <a class="scroll-hint" href="#architecture"><span class="scroll-arrow" aria-hidden="true">↓</span><span>Листайте, чтобы<br>почувствовать пространство</span></a>
+          </div>
+          <div class="media-status" role="status"><span data-loading>Готовим путешествие…</span><button data-retry hidden>Повторить загрузку</button></div>
+          <button class="static-toggle" data-motion-toggle hidden>Включить движение</button>
+        </div>
+      </section>
+      <section class="dream-gallery" id="architecture" aria-labelledby="architecture-heading" data-gallery>
+    <div class="dream-section-label">Архитектура · Строительство · Ваш дом</div>
+    <div class="dream-stage">
+      <h2 id="architecture-heading"><span>ДОМА</span><br>ВАШЕЙ МЕЧТЫ</h2>
+      <figure class="dream-figure">
+        <div class="dream-media">
+          <img class="dream-poster" src="./assets/houses/house-01.webp" alt="Этапы строительства и архитектура загородных домов" width="1280" height="720" loading="lazy">
+          <video class="dream-film" loop muted playsinline preload="none" disablepictureinpicture disableremoteplayback poster="./assets/houses/house-01.webp" aria-label="От строительства до готового дома: визуальная история" aria-describedby="story-description" tabindex="-1" data-story-video data-src="./assets/dream-story.mp4"></video>
+          <div class="story-loading" role="status" data-story-status>Готовим историю…</div>
+        </div>
+      </figure>
+      <div class="dream-copy">
+        <p class="dream-statement">От первого камня<br>до места, которое вы называете домом</p>
+        <p class="dream-description">Продумываем архитектуру, возводим дом и создаём пространство вокруг<br class="desktop-break"> для тихих утренних часов, встреч с близкими и вашей повседневной жизни.</p>
+      </div>
+      <p id="story-description" class="sr-only">Десять этапов строительства, работа строителей, пятнадцать готовых домов и плавный облёт участка. История автоматически повторяется, пока этот блок на экране.</p>
+    </div>
+    <div class="dream-section-bottom"><span>Дерево · Камень · Характер</span><button class="dream-cta" type="button" data-dialog="consultation">Обсудить свой дом <span aria-hidden="true">↗</span></button><span>Архитектурные визуализации</span></div>
+  </section>
+      <section class="brand-portal" id="transition" aria-label="Твой дом переход" data-brand-portal><div class="portal-stage"><div class="portal-destination" aria-hidden="true" inert></div><video data-portal-forward class="portal-film is-active" muted playsinline preload="none" disablepictureinpicture disableremoteplayback poster="./assets/brand-transition-poster.jpg" aria-label="Сборка логотипа Твой ДОМ и приближение к букве О" tabindex="-1" data-src="./assets/brand-transition.mp4"></video><video data-portal-reverse class="portal-film" muted playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-src="./assets/brand-transition-reverse.mp4"></video><div class="portal-paper" aria-hidden="true"></div><button class="portal-start" type="button" hidden>Начать переход <span aria-hidden="true">↗</span></button><button class="portal-recovery" type="button" hidden>Продолжить без анимации</button><span class="sr-only" role="status" data-portal-status></span></div></section>
+      <section class="life-section models-section" id="life" aria-labelledby="life-heading" data-olive-section data-models><h2 class="sr-only" id="life-heading">Дома и бани Выберите свой характер</h2><div class="models-stage"><div class="models-top"><span>Дома и бани</span><span>Материал · Форма · Ваш характер</span></div><figure class="models-photo"><img class="model-image is-active" src="./assets/models/model-01.webp" width="1122" height="1402" loading="lazy" decoding="async" alt="Двухэтажный кирпичный дом с садом, дорожками и деревянным забором на собственном участке" aria-hidden="false"><img class="model-image" data-src="./assets/models/model-02.webp" width="1122" height="1402" loading="lazy" decoding="async" alt="Одноэтажный светлый дом из газобетона с террасой и огороженным двором" aria-hidden="true"><img class="model-image" data-src="./assets/models/model-03.webp" width="1122" height="1402" loading="lazy" decoding="async" alt="Дом из керамических блоков с бежевым фасадом, садом и металлическим забором" aria-hidden="true"><img class="model-image" data-src="./assets/models/model-04.webp" width="1122" height="1402" loading="lazy" decoding="async" alt="Тёмный каркасный барнхаус с террасой на огороженном участке у леса" aria-hidden="true"><img class="model-image" data-src="./assets/models/model-05.webp" width="1122" height="1402" loading="lazy" decoding="async" alt="Одноэтажный дом из клеёного бруса с верандой, вид через открытую калитку частного сада" aria-hidden="true"><img class="model-image" data-src="./assets/models/model-06.webp" width="1122" height="1402" loading="lazy" decoding="async" alt="Современный монолитный дом с плоской крышей, гаражом и огороженным двором" aria-hidden="true"><img class="model-image" data-src="./assets/models/model-07.webp" width="1122" height="1402" loading="lazy" decoding="async" alt="Бревенчатая баня с крыльцом и небольшим прудом за деревянной калиткой" aria-hidden="true"><img class="model-image" data-src="./assets/models/model-08.webp" width="1122" height="1402" loading="lazy" decoding="async" alt="Баня из бруса с террасой и бассейном внутри огороженного участка" aria-hidden="true"><img class="model-image" data-src="./assets/models/model-09.webp" width="1122" height="1402" loading="lazy" decoding="async" alt="Кирпичная баня с хозяйственным двориком, цветниками и забором по границе участка" aria-hidden="true"></figure><ol class="models-list models-options" aria-label="Виды домов и бань" aria-describedby="models-help"><li class="model-row"><a class="model-pick" href="/construction/brick/" aria-current="true" tabindex="0" data-model-index="0"><span>Дом из кирпича</span></a></li><li class="model-row"><a class="model-pick" href="/construction/aerated/" aria-current="false" tabindex="-1" data-model-index="1"><span>Дом из газобетона</span></a></li><li class="model-row"><a class="model-pick model-label--long" href="/construction/ceramic/" aria-current="false" tabindex="-1" data-model-index="2"><span>Дом из керамических блоков</span></a></li><li class="model-row"><a class="model-pick" href="/construction/frame/" aria-current="false" tabindex="-1" data-model-index="3"><span>Каркасный дом</span></a></li><li class="model-row"><a class="model-pick" href="/construction/timber/" aria-current="false" tabindex="-1" data-model-index="4"><span>Дом из клеёного бруса</span></a></li><li class="model-row"><a class="model-pick model-label--long" href="/construction/concrete/" aria-current="false" tabindex="-1" data-model-index="5"><span>Дом из монолитного бетона</span></a></li><li class="model-row"><a class="model-pick" href="/construction/log-bath/" aria-current="false" tabindex="-1" data-model-index="6"><span>Баня из бревна</span></a></li><li class="model-row"><a class="model-pick" href="/construction/timber-bath/" aria-current="false" tabindex="-1" data-model-index="7"><span>Баня из бруса</span></a></li><li class="model-row"><a class="model-pick" href="/construction/brick-bath/" aria-current="false" tabindex="-1" data-model-index="8"><span>Баня из кирпича</span></a></li></ol><div class="models-list models-front" aria-hidden="true"><div class="model-row is-active"><span class="model-echo"><span>Дом из кирпича</span></span></div><div class="model-row"><span class="model-echo"><span>Дом из газобетона</span></span></div><div class="model-row"><span class="model-echo model-label--long"><span>Дом из керамических блоков</span></span></div><div class="model-row"><span class="model-echo"><span>Каркасный дом</span></span></div><div class="model-row"><span class="model-echo"><span>Дом из клеёного бруса</span></span></div><div class="model-row"><span class="model-echo model-label--long"><span>Дом из монолитного бетона</span></span></div><div class="model-row"><span class="model-echo"><span>Баня из бревна</span></span></div><div class="model-row"><span class="model-echo"><span>Баня из бруса</span></span></div><div class="model-row"><span class="model-echo"><span>Баня из кирпича</span></span></div></div><div class="models-veil" aria-hidden="true"></div><div class="models-bottom"><p class="models-note" data-model-note>Кирпичная кладка · характер в каждой детали</p><button class="life-cta models-cta" type="button" data-dialog="consultation" data-model-cta>Обсудить проект <span aria-hidden="true">↗</span></button></div><div class="models-mobile" role="region" aria-label="Дома и бани" aria-roledescription="карусель" tabindex="0"><div class="models-mobile-heading"><span>Дома и бани</span><output data-mobile-count aria-live="polite" aria-atomic="true">01 / 09</output></div><div class="models-mobile-window"><article class="model-mobile-card" data-mobile-card aria-label="Дом из кирпича"><a class="model-mobile-photo" href="/construction/brick/" tabindex="-1" aria-hidden="true"><img src="./assets/models/model-01.webp" alt="Двухэтажный кирпичный дом с садом, дорожками и деревянным забором на собственном участке" width="1122" height="1402" loading="lazy" decoding="async"></a><div class="model-mobile-copy"><h3><a href="/construction/brick/">Дом из кирпича</a></h3><p>Кирпичная кладка · характер в каждой детали</p><div class="model-mobile-actions"><a href="/construction/brick/">Смотреть проект ↗</a><button type="button" data-dialog="consultation" data-mobile-inquiry="0" data-no-motion>Обсудить дом ↗</button></div></div></article><article class="model-mobile-card" data-mobile-card hidden aria-label="Дом из газобетона"><a class="model-mobile-photo" href="/construction/aerated/" tabindex="-1" aria-hidden="true"><img data-src="./assets/models/model-02.webp" alt="Одноэтажный светлый дом из газобетона с террасой и огороженным двором" width="1122" height="1402" loading="lazy" decoding="async"></a><div class="model-mobile-copy"><h3><a href="/construction/aerated/">Дом из газобетона</a></h3><p>Газобетон · свет и простор</p><div class="model-mobile-actions"><a href="/construction/aerated/">Смотреть проект ↗</a><button type="button" data-dialog="consultation" data-mobile-inquiry="1" data-no-motion>Обсудить дом ↗</button></div></div></article><article class="model-mobile-card" data-mobile-card hidden aria-label="Дом из керамических блоков"><a class="model-mobile-photo" href="/construction/ceramic/" tabindex="-1" aria-hidden="true"><img data-src="./assets/models/model-03.webp" alt="Дом из керамических блоков с бежевым фасадом, садом и металлическим забором" width="1122" height="1402" loading="lazy" decoding="async"></a><div class="model-mobile-copy"><h3><a href="/construction/ceramic/">Дом из керамических блоков</a></h3><p>Тёплая керамика · основа семейного дома</p><div class="model-mobile-actions"><a href="/construction/ceramic/">Смотреть проект ↗</a><button type="button" data-dialog="consultation" data-mobile-inquiry="2" data-no-motion>Обсудить дом ↗</button></div></div></article><article class="model-mobile-card" data-mobile-card hidden aria-label="Каркасный дом"><a class="model-mobile-photo" href="/construction/frame/" tabindex="-1" aria-hidden="true"><img data-src="./assets/models/model-04.webp" alt="Тёмный каркасный барнхаус с террасой на огороженном участке у леса" width="1122" height="1402" loading="lazy" decoding="async"></a><div class="model-mobile-copy"><h3><a href="/construction/frame/">Каркасный дом</a></h3><p>Деревянный каркас · современный силуэт</p><div class="model-mobile-actions"><a href="/construction/frame/">Смотреть проект ↗</a><button type="button" data-dialog="consultation" data-mobile-inquiry="3" data-no-motion>Обсудить дом ↗</button></div></div></article><article class="model-mobile-card" data-mobile-card hidden aria-label="Дом из клеёного бруса"><a class="model-mobile-photo" href="/construction/timber/" tabindex="-1" aria-hidden="true"><img data-src="./assets/models/model-05.webp" alt="Одноэтажный дом из клеёного бруса с верандой, вид через открытую калитку частного сада" width="1122" height="1402" loading="lazy" decoding="async"></a><div class="model-mobile-copy"><h3><a href="/construction/timber/">Дом из клеёного бруса</a></h3><p>Клеёный брус · естественная фактура дерева</p><div class="model-mobile-actions"><a href="/construction/timber/">Смотреть проект ↗</a><button type="button" data-dialog="consultation" data-mobile-inquiry="4" data-no-motion>Обсудить дом ↗</button></div></div></article><article class="model-mobile-card" data-mobile-card hidden aria-label="Дом из монолитного бетона"><a class="model-mobile-photo" href="/construction/concrete/" tabindex="-1" aria-hidden="true"><img data-src="./assets/models/model-06.webp" alt="Современный монолитный дом с плоской крышей, гаражом и огороженным двором" width="1122" height="1402" loading="lazy" decoding="async"></a><div class="model-mobile-copy"><h3><a href="/construction/concrete/">Дом из монолитного бетона</a></h3><p>Монолитный бетон · свобода архитектуры</p><div class="model-mobile-actions"><a href="/construction/concrete/">Смотреть проект ↗</a><button type="button" data-dialog="consultation" data-mobile-inquiry="5" data-no-motion>Обсудить дом ↗</button></div></div></article><article class="model-mobile-card" data-mobile-card hidden aria-label="Баня из бревна"><a class="model-mobile-photo" href="/construction/log-bath/" tabindex="-1" aria-hidden="true"><img data-src="./assets/models/model-07.webp" alt="Бревенчатая баня с крыльцом и небольшим прудом за деревянной калиткой" width="1122" height="1402" loading="lazy" decoding="async"></a><div class="model-mobile-copy"><h3><a href="/construction/log-bath/">Баня из бревна</a></h3><p>Бревно · традиция загородного отдыха</p><div class="model-mobile-actions"><a href="/construction/log-bath/">Смотреть проект ↗</a><button type="button" data-dialog="consultation" data-mobile-inquiry="6" data-no-motion>Обсудить дом ↗</button></div></div></article><article class="model-mobile-card" data-mobile-card hidden aria-label="Баня из бруса"><a class="model-mobile-photo" href="/construction/timber-bath/" tabindex="-1" aria-hidden="true"><img data-src="./assets/models/model-08.webp" alt="Баня из бруса с террасой и бассейном внутри огороженного участка" width="1122" height="1402" loading="lazy" decoding="async"></a><div class="model-mobile-copy"><h3><a href="/construction/timber-bath/">Баня из бруса</a></h3><p>Брус · своя территория отдыха</p><div class="model-mobile-actions"><a href="/construction/timber-bath/">Смотреть проект ↗</a><button type="button" data-dialog="consultation" data-mobile-inquiry="7" data-no-motion>Обсудить дом ↗</button></div></div></article><article class="model-mobile-card" data-mobile-card hidden aria-label="Баня из кирпича"><a class="model-mobile-photo" href="/construction/brick-bath/" tabindex="-1" aria-hidden="true"><img data-src="./assets/models/model-09.webp" alt="Кирпичная баня с хозяйственным двориком, цветниками и забором по границе участка" width="1122" height="1402" loading="lazy" decoding="async"></a><div class="model-mobile-copy"><h3><a href="/construction/brick-bath/">Баня из кирпича</a></h3><p>Кирпич · уютный двор для отдыха</p><div class="model-mobile-actions"><a href="/construction/brick-bath/">Смотреть проект ↗</a><button type="button" data-dialog="consultation" data-mobile-inquiry="8" data-no-motion>Обсудить дом ↗</button></div></div></article></div><div class="models-mobile-controls"><button type="button" data-mobile-prev data-no-motion aria-label="Предыдущий дом" disabled>←</button><span>Один свайп, один дом</span><button type="button" data-mobile-next data-no-motion aria-label="Следующий дом">→</button></div></div><p class="sr-only" id="models-help">Прокручивайте страницу или используйте стрелки вверх и вниз для выбора. Нажмите на название или Enter, чтобы открыть страницу проекта.</p></div></section>
+    </main>
+    <footer class="site-footer dream-footer" id="contacts" aria-labelledby="footer-heading" data-dream-footer>
+    <div class="footer-stage">
+      <div class="footer-top">
+        <div class="footer-invitation"><span class="footer-caption">От мечты к своему дому</span><p>Давайте<br>строить вместе</p></div>
+        <address class="footer-contacts">
+          <a class="footer-phone" href="tel:+70000000000">+7 (000) 000 00 00</a>
+          <a href="mailto:hello@tvoydom.example">hello@tvoydom.example</a>
+          <button class="footer-telegram" type="button" data-dialog="manager">Telegram <span aria-hidden="true">↗</span></button>
+          <span class="footer-handle">@tvoydom_demo</span>
+        </address>
+        <div class="footer-location">
+          <a class="footer-map" href="https://yandex.ru/maps/?ll=37.2777%2C55.6780&z=16&pt=37.2777%2C55.6780%2Cpm2gnm" target="_blank" rel="noopener noreferrer" aria-label="Открыть демонстрационную точку в Одинцово на Яндекс Картах">
+            <img src="./assets/odintsovo-map.webp" alt="Карта центра Одинцово с демонстрационной точкой" width="720" height="400" loading="lazy" decoding="async">
+            <span class="footer-map-pin" aria-hidden="true"><svg viewBox="0 0 32 40" fill="none"><path d="M16 39S1 23 1 16a15 15 0 1 1 30 0c0 7-15 23-15 23Z" fill="currentColor"/><path d="m9 20 7-6 7 6v8h-5v-6h-4v6H9Z" fill="var(--paper)"/></svg></span>
+            <span class="footer-map-open" aria-hidden="true">Открыть карту ↗</span>
+          </a>
+          <div class="footer-map-caption"><span>Одинцово, Московская область</span><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap</a></div>
+        </div>
+      </div>
+      <h2 class="sr-only" id="footer-heading">Твой дом Твоя мечта</h2>
+      <div class="footer-split" aria-hidden="true"><span class="footer-word footer-word--home">ТВОЙ ДОМ</span><span class="footer-word footer-word--dream">ТВОЯ МЕЧТА</span></div>
+      <div class="footer-message">
+        <p class="footer-slogan">Строим дом<br>Создаём место для жизни</p>
+        <button class="footer-cta" type="button" data-dialog="consultation">Начнём с вашей мечты <span aria-hidden="true">↗</span></button>
+      </div>
+      <div class="footer-bottom"><a class="footer-signature" href="#top">Наверх<span aria-hidden="true">↑</span></a><span class="footer-demo">Тестовая версия · Контакты и точка на карте демонстрационные</span><span>© 2026</span></div>
+    </div>
+  </footer>
+    <dialog id="consultation" class="contact-dialog" aria-labelledby="consultation-title">
+      <button class="dialog-close" data-close aria-label="Закрыть">×</button>
+      <div data-contact-entry>
+      <span class="eyebrow">Первый шаг</span><h2 id="consultation-title">ОБСУДИМ<br>ВАШ ДОМ?</h2>
+      <p class="dialog-description">Оставьте удобный способ связи.</p>
+      <section class="contact-calculation" data-contact-calculation hidden><div class="contact-calculation-heading"><h3>Ваш расчёт дома</h3><button type="button" class="contact-calculation-reset" data-contact-calculation-reset>Сброс</button></div><dl data-contact-calculation-rows></dl><p data-contact-calculation-warning></p></section>
+      <p class="contact-calculation-status" data-contact-calculation-status role="status" hidden></p>
+      <form data-contact-form>
+        <input type="hidden" name="calculation" data-contact-calculation-data>
+        <label>Как к вам обращаться<input name="name" autocomplete="given-name" placeholder="Ваше имя" required maxlength="80"></label>
+        <label>Телефон или Telegram<input name="contact" autocomplete="tel" placeholder="+7 … или @username" required minlength="4" maxlength="100"></label>
+        <label>Пару слов о доме <span>(необязательно)</span><textarea name="comment" rows="2" maxlength="1000" placeholder="Что вы представляете?"></textarea></label>
+        <label class="contact-consent"><input type="checkbox" name="personal_data_consent" required value="25.10.2026"><span>Даю <a href="/consent/" target="_blank" rel="noopener noreferrer">согласие на обработку персональных данных</a> для ответа на мой запрос.</span></label>
+        <p class="contact-privacy-note">Информация об обработке: <a href="/privacy/" target="_blank" rel="noopener noreferrer">политика конфиденциальности</a>. В тестовой версии документы и отметка согласия демонстрационные; реальные реквизиты оператора ещё не заданы.</p>
+        <p class="demo-note">Это демонстрационная форма. Контакты пока никуда не отправляются.</p>
+        <button class="solid-button" type="submit">Записаться <span aria-hidden="true">↗</span></button>
+      </form>
+      </div>
+      <section class="contact-success" data-contact-success hidden tabindex="-1" aria-labelledby="contact-success-title">
+        <svg class="contact-success-icon" aria-hidden="true" viewBox="0 0 64 64" fill="none"><path d="M9 31 32 12l23 19v24H9V31Z" stroke="currentColor" stroke-width="2"/><path d="m22 35 7 7 15-16" stroke="currentColor" stroke-width="3"/></svg>
+        <h2 id="contact-success-title">Спасибо<br>за обращение</h2>
+        <p class="contact-success-message">В ближайшее время менеджер с вами свяжется</p>
+        <p class="demo-note">Тестовый режим: это пример подтверждения. Данные пока не отправляются.</p>
+        <button class="solid-button" type="button" data-success-close>Вернуться на сайт <span aria-hidden="true">↗</span></button>
+      </section>
+    </dialog>
+    <dialog id="manager" class="contact-dialog manager-dialog" aria-labelledby="manager-title">
+      <button class="dialog-close" data-close aria-label="Закрыть">×</button>
+      <span class="eyebrow">На связи</span><h2 id="manager-title">ДАВАЙТЕ<br>ПОГОВОРИМ</h2>
+      <p class="dialog-description">Тестовая версия: ниже демонстрационные контакты. Перед запуском заменим их на контакты компании.</p>
+      <ul class="contact-options"><li><span>Telegram</span><span>@tvoydom_demo</span></li><li><span>Телефон</span><span>+7 (000) 000 00 00</span></li><li><span>Почта</span><span>hello@tvoydom.example</span></li></ul>
+    </dialog>
+  </div><noscript><p style="padding:20px;font-family:Arial">Для анимаций, калькулятора и формы обратной связи включите JavaScript</p></noscript><script src="./assets/lenis-1.3.26.min.js"></script><script type="module" src="./app/main.js"></script></body></html>

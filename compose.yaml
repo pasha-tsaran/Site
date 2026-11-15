@@ -1,0 +1,49 @@
+services:
+  cms:
+    image: home-site-cms:${IMAGE_TAG:-local}
+    build:
+      context: .
+      target: cms
+    restart: unless-stopped
+    environment:
+      TRUST_PROXY: "1"
+    volumes:
+      - cms-data:/data
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 100
+    mem_limit: 256m
+  web:
+    image: home-site:${IMAGE_TAG:-local}
+    build:
+      context: .
+      args:
+        VCS_REF: ${VCS_REF:-working-tree}
+    pull_policy: never
+    depends_on:
+      cms:
+        condition: service_healthy
+    ports:
+      - "${HTTP_BIND:-127.0.0.1}:${HTTP_PORT:-4180}:8080"
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=32m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 100
+    mem_limit: 128m
+    cpus: 0.5
+    stop_grace_period: 15s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  cms-data:

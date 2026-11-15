@@ -1,0 +1,17 @@
+{
+  "name": "home-architecture",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/serve.mjs",
+    "check": "node --check src/components/segmented-video.js && node --check src/components/scroll-video.js && node --check src/components/dialogs.js && node --check src/components/dream-gallery.js && node --check src/components/button-motion.js && node --check src/components/dream-footer.js && node --check src/components/site-header.js && node --check src/components/site-footer.js && node --check src/pages/home.js && node --check src/pages/construction.js && node --check src/pages/about.js && node --check src/data/about.js && node --check src/data/construction.js && node --check src/data/site.js && node --check src/main.js && node --check scripts/serve.mjs && node --check scripts/build.mjs && node --check scripts/offline.mjs && node --check src/components/brand-portal.js && node --check src/data/portal.js && node --check src/components/models-gallery.js && node --check src/data/models.js && node --check src/data/calculator.js && node --check src/pages/calculator.js && node --check src/components/calculator-pdf.js && node --check src/pages/legal.js && node --check src/components/page-loading.js && node --check scripts/document.mjs",
+    "media:verify": "node scripts/verify-media-streams.mjs",
+    "media:segment": "node scripts/segment-media.mjs",
+    "test:calculator": "node --test tests/calculator.test.mjs",
+    "test:cms": "node --test tests/cms.test.mjs tests/cms-runtime.test.mjs",
+    "test": "node --test tests/calculator.test.mjs tests/scroll-video.test.mjs tests/dream-gallery.test.mjs tests/page-loading.test.mjs tests/segmented-video.test.mjs tests/mobile-models.test.mjs",
+    "verify:offline": "node scripts/verify-offline.mjs",
+    "benchmark:animation": "node scripts/benchmark-animation.mjs"
+  }
+}

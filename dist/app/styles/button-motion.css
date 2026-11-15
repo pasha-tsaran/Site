@@ -1,0 +1,29 @@
+/* Two outgoing text halves expose a coloured word through the centre. */
+body .has-motion[data-motion-button],body .has-motion[data-motion-button]:hover{isolation:isolate;overflow:hidden;background:var(--paper);color:var(--ink);border-color:var(--olive);transition:border-color .25s;--motion-fill:var(--olive);--motion-text:var(--cream);--motion-time:560ms;--motion-ease:cubic-bezier(.65,0,.2,1)}
+body .has-motion[data-motion-button]:not(.dialog-close):not(.static-toggle){position:relative}
+.has-motion::before{content:"";position:absolute;inset:-1px;z-index:-1;background:var(--motion-fill);border-radius:50%;transform:scaleY(0);transform-origin:center;transition:transform var(--motion-time) var(--motion-ease),border-radius var(--motion-time) var(--motion-ease);pointer-events:none}
+.has-motion .motion-label{position:relative;display:inline-grid;vertical-align:middle;font-size:inherit;line-height:inherit;letter-spacing:inherit;pointer-events:none}
+.has-motion .motion-label>span{grid-area:1/1;display:inline-flex;align-items:center;justify-content:center;gap:var(--motion-gap);font-size:inherit;line-height:inherit;letter-spacing:inherit;white-space:nowrap;pointer-events:none}
+.has-motion .motion-label-size{visibility:hidden}
+.has-motion .motion-label-top,.has-motion .motion-label-bottom{transition:transform var(--motion-time) var(--motion-ease),opacity var(--motion-time) var(--motion-ease);transform:translateY(0);opacity:1}
+.has-motion .motion-label-top{clip-path:inset(0 0 50% 0)}
+.has-motion .motion-label-bottom{clip-path:inset(50% 0 0 0)}
+.has-motion .motion-label-reveal{clip-path:inset(50% 0 50% 0);transform:scaleY(.12);color:var(--motion-text);transition:clip-path var(--motion-time) var(--motion-ease),transform var(--motion-time) var(--motion-ease)}
+.has-motion:focus-visible::before{transform:scaleY(1);border-radius:inherit}
+.has-motion:focus-visible .motion-label-top{transform:translateY(-105%);opacity:0}
+.has-motion:focus-visible .motion-label-bottom{transform:translateY(105%);opacity:0}
+.has-motion:focus-visible .motion-label-reveal{clip-path:inset(0);transform:scaleY(1)}
+.solid-button.has-motion .motion-label{width:100%}
+.solid-button.has-motion .motion-label>span{width:100%;justify-content:space-between}
+.dialog-close.has-motion{width:38px;height:38px;padding:0;border:1px solid var(--olive);border-radius:50%;display:grid;place-items:center;line-height:1}
+.text-button.has-motion{padding:10px 14px;border:1px solid var(--olive);border-radius:2px;line-height:1.4}
+@media(hover:hover) and (pointer:fine){
+  .has-motion:hover::before{transform:scaleY(1);border-radius:inherit}
+  .has-motion:hover .motion-label-top{transform:translateY(-105%);opacity:0}
+  .has-motion:hover .motion-label-bottom{transform:translateY(105%);opacity:0}
+  .has-motion:hover .motion-label-reveal{clip-path:inset(0);transform:scaleY(1)}
+}
+.has-motion:active::before{transform:scaleY(1);border-radius:inherit;transition-duration:120ms}
+.has-motion:active .motion-label-top,.has-motion:active .motion-label-bottom{opacity:0;transition-duration:120ms}
+.has-motion:active .motion-label-reveal{clip-path:inset(0);transform:scaleY(1);transition-duration:120ms}
+@media(prefers-reduced-motion:reduce){.has-motion::before,.has-motion .motion-label>span{transition:none!important}}

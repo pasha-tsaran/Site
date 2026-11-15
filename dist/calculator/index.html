@@ -1,0 +1,250 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><base href="../"><meta name="theme-color" content="#efe6cf"><meta name="description" content="Калькулятор стоимости дома: площади этажей, комнаты, материал, комплектация, фундамент и срок строительства."><title>Калькулятор дома | Твой дом</title><link rel="icon" href="./assets/favicon.svg" type="image/svg+xml"><style>.page-loading{display:none;position:fixed;inset:0;z-index:100;background:#efe6cf;color:#626747;padding:25px clamp(20px,2.1vw,44px);font-family:Arial,sans-serif}
+.page-pending .page-loading{display:flex;flex-direction:column}
+.page-pending #app{visibility:hidden}
+.loading-header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.loading-brand{font-size:36px;font-weight:800;letter-spacing:-.08em;line-height:1}
+.loading-nav{display:flex;gap:10px}
+.page-loading i{display:block;background:#62674714;border-radius:2px}
+.loading-nav i{width:100px;height:29px;border-radius:30px}
+.loading-content{display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:center;flex:1;padding:70px 0 40px}
+.loading-heading{display:grid;gap:18px}
+.loading-heading i{height:clamp(45px,7vw,125px)}
+.loading-heading i:last-child{width:78%}
+.loading-media{height:min(53vh,560px);background:#6267470c;border-radius:3px}
+.page-loading--home .loading-content{grid-template-columns:1fr;position:relative}
+.page-loading--home .loading-media{position:absolute;inset:50px 0 20px;height:auto}
+.page-loading--home .loading-heading{z-index:1;width:75%;align-self:end;margin-bottom:70px}
+.page-loading--home .loading-heading i{background:#62674718}
+.loading-caption{font-size:13px;line-height:1.5;padding-bottom:10px}
+@media(max-width:700px){.loading-header{align-items:flex-start}.loading-nav{gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:190px}.loading-nav i{width:75px;height:28px}.loading-brand{font-size:31px}.loading-content{grid-template-columns:1fr;gap:35px;padding-top:75px}.loading-media{height:32vh}.page-loading--home .loading-heading{width:100%;margin-bottom:55px}.loading-caption{font-size:12px}}
+</style><script>(function () {
+  document.documentElement.classList.add('page-pending');
+  function release() {
+    clearTimeout(window.__pageLoadingTimeout);
+    document.documentElement.classList.remove('page-pending');
+    document.getElementById('page-loading')?.remove();
+    document.getElementById('app')?.setAttribute('aria-busy','false');
+  }
+  function firstImage() { return document.getElementById('app')?.querySelector('img[fetchpriority="high"], main img:not([loading="lazy"])'); }
+  window.__pageLoadingTimeout=setTimeout(release,8000);
+  // Server-rendered content can be shown before the interactive module graph is downloaded.
+  document.addEventListener?.('load',event=>{ if(event.target === firstImage()) release(); },true);
+  document.addEventListener?.('DOMContentLoaded',()=>{
+    if(document.getElementById('app')?.dataset?.page && (!firstImage() || firstImage().complete)) release();
+  },{once:true});
+})();</script><link rel="stylesheet" href="./app/styles/site.css"><link rel="stylesheet" href="./app/styles/calculator.css"><style>/* Shared finishing rules, placed after route styles in the generated document. */
+html,body{scrollbar-width:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
+.mobile-menu-toggle,.models-mobile{display:none}
+main,section,article,figure{min-width:0}
+.construction-card-copy{padding-top:16px}
+.construction-card-copy h2{min-height:0;line-height:1.12}
+.construction-card-meta{margin-top:9px;line-height:1.35}
+.construction-card-price{margin-top:10px}
+.construction-grid{row-gap:42px}
+
+.about-history{gap:6vw;margin:88px 0}
+.about-history-intro{display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+.about-history h2{font-size:clamp(34px,3.8vw,70px)}
+.about-history-intro>div>p{max-width:38ch;font-size:18px}
+.about-history-context h3{font-size:clamp(25px,2vw,36px);font-weight:400;line-height:1.12;letter-spacing:-.035em;margin:0 0 20px}
+.about-history-context p{max-width:46ch;font-size:17px;line-height:1.55;margin:0 0 18px}
+.about-history-context a{font-size:16px;display:inline-flex;gap:24px;align-items:center;margin-top:4px}
+.about-timeline{gap:0}
+.about-timeline li{position:relative;grid-template-columns:80px 16px minmax(0,1fr);gap:22px;padding-bottom:36px}
+.about-timeline li:last-child{padding-bottom:0}
+.about-timeline li:not(:last-child)::after{content:"";position:absolute;width:1px;background:#62674755;left:109.5px;top:14px;bottom:-14px}
+.about-timeline-dot{position:relative;z-index:1;display:block;width:12px;height:12px;margin:7px 0 0 2px;border-radius:50%;background:var(--olive);box-shadow:0 0 0 5px var(--paper)}
+.about-year{font-size:21px;line-height:1.3}
+.about-year small{display:block;font-size:13px;margin-top:6px;letter-spacing:0}
+.about-timeline h3{font-size:clamp(22px,1.9vw,30px);margin-bottom:12px}
+.about-timeline p{font-size:16px;line-height:1.55;max-width:54ch}
+.about-materials{margin:56px 0 80px}
+.about-materials img{aspect-ratio:auto;height:clamp(320px,calc(100svh - 230px),680px);object-position:50% 37%}
+.about-director{align-items:stretch;gap:5vw;margin-bottom:85px}
+.about-director-photo{position:relative;min-height:0}
+.about-director-photo img{position:absolute;inset:0;height:100%;width:100%;aspect-ratio:auto;object-position:50% 24%}
+.about-director-copy h2{font-size:clamp(38px,4.1vw,78px);line-height:.98}
+.about-director-copy p{font-size:clamp(16px,1.1vw,18px);line-height:1.48;margin-bottom:16px;max-width:56ch}
+.about-director-role{margin:14px 0 22px!important}
+.about-director-link{margin-top:5px}
+.about-director-copy .about-portrait-note{margin:14px 0 0;font-size:12px}
+
+@media(max-width:840px){
+  :root{--gutter:20px}
+  body .site-header{padding:14px var(--gutter);min-height:74px;align-items:center;background:var(--paper)!important;color:var(--olive)!important}
+  .site-header .wordmark{font-size:32px;flex-shrink:0}
+  .site-header .brand-caption{display:none}
+  .site-header .mobile-menu-toggle:not([hidden]){display:inline-flex;align-items:center;gap:16px;min-height:44px;padding:10px 14px;border:1px solid var(--olive);border-radius:24px;background:transparent;color:var(--olive);font-size:14px}
+  .mobile-menu-toggle>span{width:18px;height:10px;border-block:1px solid currentColor;transition:transform .2s}
+  .menu-open .mobile-menu-toggle>span{transform:rotate(90deg)}
+  body .site-header[data-menu-ready] nav{position:absolute;inset:calc(100% - 1px) 0 auto;margin:0;padding:18px var(--gutter) 24px;display:grid;gap:10px;background:var(--paper);border-bottom:1px solid #62674755}
+  body .site-header[data-menu-ready] nav .nav-link{display:flex;align-items:center;justify-content:center;min-height:46px;width:100%;margin:0;padding:12px 16px;font-size:17px;line-height:1.2;border-color:var(--olive);color:var(--olive)}
+  body .site-header[data-menu-ready] nav .nav-link[aria-current="page"]{color:var(--paper);background:var(--olive)}
+  body .site-header[data-menu-ready] nav .nav-dialog-label{display:inline}
+  .construction-main,.project-main,.about-main,.calculator-main,.legal-main{padding-top:112px}
+  .construction-intro,.about-intro,.calculator-intro{margin-top:0}
+  .hero-eyebrow{top:104px}
+}
+
+@media(max-width:700px){
+  html{scroll-padding-top:88px}
+  img,video{max-width:100%}
+  h1,h2,h3{overflow-wrap:break-word}
+  .construction-intro h1{font-size:clamp(25px,7.5vw,52px);line-height:1;max-width:100%;letter-spacing:-.055em}
+  .calculator-intro h1{font-size:clamp(29px,9vw,62px);line-height:1;max-width:100%}
+  .about-intro h1{font-size:clamp(33px,10vw,66px);line-height:1;max-width:100%}
+  .construction-intro-copy{margin-top:20px;max-width:32ch;line-height:1.45}
+  .construction-intro{margin-bottom:32px}
+  .construction-card-copy h2{font-size:25px}
+  .construction-card-copy{padding-top:14px}
+  .construction-card-meta{font-size:15px;margin-top:8px}
+  .construction-card-price{font-size:24px;margin-top:9px}
+  .construction-card-price span{font-size:13px}
+  .construction-footer{grid-template-columns:1fr;gap:24px}
+  .construction-footer>a{width:max-content;max-width:100%;font-size:15px}
+  .construction-footer-logo{font-size:36px}
+  .project-copy h1{font-size:clamp(30px,8.7vw,52px);line-height:1.05}
+  .project-photo{min-height:0;aspect-ratio:1.2}
+  .project-related-heading{align-items:start;flex-direction:column;gap:16px}
+  .about-intro{gap:24px}
+  .about-intro p{font-size:17px;line-height:1.5}
+  .about-hero-photo{aspect-ratio:1.35}
+  .about-hero-photo figcaption{font-size:12px;line-height:1.35}
+  .about-history{gap:34px;margin:56px 0}
+  .about-history h2{font-size:clamp(34px,9.3vw,56px)}
+  .about-history-intro{gap:28px}
+  .about-history-intro>div>p{font-size:17px;margin-top:20px}
+  .about-history-context h3{font-size:27px}
+  .about-history-context p{font-size:16px;margin:0 0 16px;max-width:none}
+  .about-timeline li{grid-template-columns:61px 14px minmax(0,1fr);gap:13px;padding-bottom:30px}
+  .about-timeline li:not(:last-child)::after{left:80px;top:13px;bottom:-13px}
+  .about-timeline-dot{width:10px;height:10px;margin-left:2px}
+  .about-year{font-size:17px}
+  .about-timeline h3{font-size:22px;line-height:1.15;margin-bottom:10px}
+  .about-timeline p{font-size:15px;line-height:1.55}
+  .about-materials{gap:14px;margin:44px 0 56px}
+  .about-materials img{height:clamp(230px,43svh,390px);object-position:50% 35%}
+  .about-materials figcaption{font-size:13px;line-height:1.4}
+  .about-director{gap:24px;margin-bottom:58px}
+  .about-director-photo img{position:static;height:auto;aspect-ratio:1.25;object-fit:cover;object-position:50% 21%}
+  .about-director-copy h2{font-size:clamp(34px,10.5vw,60px)}
+  .about-director-copy p{font-size:16px;line-height:1.55}
+  .about-office h2{font-size:clamp(32px,9vw,55px)}
+  .about-office-contacts a{overflow-wrap:anywhere}
+  .calc-numbers,.calc-floor-grid{gap:26px 18px}
+  .calc-number-field>label{min-height:0}
+  .calc-total{font-size:clamp(29px,8.5vw,42px)}
+  .calc-result-body{padding:22px 18px}
+  .calc-price-table td{white-space:normal}
+  .calc-price-table th,.calc-price-table td{overflow-wrap:break-word}
+  .calc-comparison-wrap{overflow-x:auto;overscroll-behavior-x:contain}
+  .calc-price-group dl>div{grid-template-columns:minmax(0,1fr) minmax(0,.8fr)}
+  .calc-price-group dd{white-space:normal;font-size:18px;overflow-wrap:anywhere}
+  .calc-mobile-summary{padding:14px 20px max(14px,env(safe-area-inset-bottom));min-height:66px}
+  .legal-main h1{font-size:clamp(27px,8.3vw,48px)}
+  .legal-main h2{font-size:25px}
+  body .contact-dialog{width:calc(100% - 24px);max-height:calc(100dvh - 24px);padding:32px 22px}
+  body .contact-dialog h2,body .contact-dialog .contact-success h2{font-size:clamp(32px,8.6vw,48px);line-height:1.05}
+  .contact-success-message{font-size:18px}
+  .contact-dialog .contact-calculation dl>div{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .contact-dialog input,.contact-dialog textarea{font-size:16px}
+  .dream-gallery{padding-top:98px}
+  .dream-stage h2{font-size:clamp(34px,10.3vw,64px);white-space:normal}
+  .dream-description{font-size:15px}
+  .dream-figure{width:100%;max-width:540px}
+  .scene-note p{font-size:clamp(31px,9vw,49px)}
+  .scene-ending p{font-size:clamp(55px,18vw,110px)}
+  .hero-title{bottom:132px}
+  .hero-title h1{font-size:clamp(34px,10.2vw,68px)}
+  .hero-bottom{bottom:28px}
+  .models-section{height:auto!important}
+  .models-stage{position:relative;height:auto;min-height:0;padding:96px var(--gutter) 24px}
+  .models-stage>.models-photo,.models-stage>.models-list,.models-stage>.models-top,.models-stage>.models-bottom{display:none}
+  .models-mobile{display:block;outline-offset:4px}
+  .models-mobile-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:18px;line-height:1.2}
+  .models-mobile-heading output{font-size:13px;font-variant-numeric:tabular-nums}
+  .models-mobile-window{position:relative;height:clamp(330px,calc(100svh - 225px),680px);overflow:hidden;touch-action:pan-y;isolation:isolate}
+  .model-mobile-card{position:absolute;inset:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:16px;min-width:0;will-change:transform}
+  .model-mobile-photo{display:block;min-height:0;overflow:hidden;border-radius:22px;background:#555a3d}
+  .model-mobile-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 32%;display:block;user-select:none;-webkit-user-drag:none}
+  .model-mobile-copy h3{font-family:var(--display);font-size:clamp(23px,6.3vw,35px);font-weight:800;line-height:1.05;letter-spacing:-.035em;text-transform:uppercase;margin:0}
+  .model-mobile-copy p{font-size:13px;line-height:1.4;margin:10px 0 14px;max-width:36ch}
+  .model-mobile-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;line-height:1.4}
+  .model-mobile-actions button{font-size:13px;border:1px solid var(--paper);background:transparent;color:inherit;padding:10px 12px;border-radius:2px;min-height:42px}
+  .models-mobile-controls{display:grid;grid-template-columns:44px 1fr 44px;gap:14px;align-items:center;margin-top:16px;font-size:12px;text-align:center}
+  .models-mobile-controls button{width:44px;height:44px;border:1px solid #efe6cf90;background:transparent;color:var(--paper);font-size:24px;border-radius:50%}
+  .models-mobile-controls button:disabled{opacity:.3;cursor:default}
+  .site-footer.dream-footer{height:auto;margin-top:0}
+  .footer-stage{position:relative;height:auto;min-height:0;display:flex;flex-direction:column;gap:34px;padding:46px var(--gutter) 26px;overflow:hidden}
+  .footer-top{position:relative;order:0;opacity:1!important;transform:none!important}
+  .footer-message{position:static;order:1;opacity:1!important;transform:none!important;text-align:center}
+  .footer-split{position:static;order:2;justify-content:space-between;font-size:clamp(17px,5.5vw,36px);gap:12px}
+  .footer-word{transform:none!important}
+  .footer-bottom{position:static;order:3;gap:16px}
+  .site-footer .footer-slogan{font-size:clamp(28px,8vw,44px)}
+}
+@media(max-width:420px){
+  :root{--gutter:18px}
+  .calc-numbers,.calc-floor-grid{grid-template-columns:1fr}
+  .calc-option-group>.calc-number-field,.calc-storeys>.calc-number-field{max-width:none}
+  .calc-number-box{padding:15px}
+  .calc-number-box input{font-size:32px}
+  .calc-number-field>label{font-size:15px}
+  .calc-mobile-summary>span{font-size:20px}
+  .calc-mobile-summary>a{font-size:12px}
+  .about-materials{gap:12px}
+  .model-mobile-actions{font-size:12px;gap:8px}
+  .model-mobile-actions button{font-size:12px;padding-inline:10px}
+  .construction-card-price{gap:8px 14px}
+}
+@media(prefers-reduced-motion:reduce){.mobile-menu-toggle>span{transition:none}.model-mobile-card{will-change:auto}}
+</style><script src="./content.js"></script></head><body class="construction-page calculator-page"><div class="page-loading page-loading--calculator" id="page-loading" role="status" aria-label="Загружаем сайт"><div class="loading-header"><span class="loading-brand" aria-hidden="true">ДОМ.</span><div class="loading-nav" aria-hidden="true"><i></i><i></i><i></i></div></div><div class="loading-content" aria-hidden="true"><div class="loading-heading"><i></i><i></i></div><div class="loading-media"></div></div><span class="loading-caption">Готовим пространство для вас</span></div><div id="app" data-page="calculator" aria-busy="true"><a class="skip-link" href="/calculator/#calculator-content">Перейти к содержанию</a><header class="site-header">
+    <a class="wordmark" href="/" aria-label="Дом на главную">ДОМ.<span class="brand-caption">Архитектура жизни</span></a>
+    <button class="mobile-menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-no-motion hidden>Меню <span aria-hidden="true"></span></button>
+    <nav id="site-navigation" aria-label="Главная навигация"><a class="nav-link" href="/">Главная</a><a class="nav-link" href="/construction/">Строительство</a><a class="nav-link" href="/calculator/" aria-current="page">Калькулятор</a><button class="nav-link" data-dialog="consultation"><span class="nav-dialog-label">Обсудить дом</span><span aria-hidden="true"> ↗</span></button><a class="nav-link" href="/about/">О нас</a></nav>
+  </header>
+  <main class="calculator-main" id="calculator-content"><section class="calculator-intro"><h1>КАЛЬКУЛЯТОР<br>ВАШЕГО ДОМА</h1><div><p>Выберите параметры.<br>Посмотрите, как складывается бюджет.</p><a class="calc-price-link" href="/calculator/#calculator-prices">Цены за единицу <span aria-hidden="true">↓</span></a></div></section>
+    <div class="calculator-layout"><form class="calculator-form" id="calculator-parameters" data-calculator-form novalidate><div class="calc-form-heading"><h2>Ваш будущий дом</h2><button type="button" class="calc-reset" data-calculator-reset>Сбросить ↺</button></div>
+      <div class="calc-numbers"><div class="calc-number-field" data-number-field="rooms"><label for="calc-rooms">Жилые комнаты</label><div class="calc-number-box"><input type="number" id="calc-rooms" name="rooms" min="1" max="11" step="1" inputmode="numeric" value="4" aria-describedby="calc-rooms-hint calc-rooms-error"><span>комн.</span></div><input class="calc-range" type="range" data-range="rooms" min="1" max="11" step="1" value="4" aria-label="Жилые комнаты, ползунок"><div class="calc-range-ends"><span data-min="rooms">1</span><span data-max="rooms">11</span></div><p class="calc-field-hint" id="calc-rooms-hint">Во всём доме, без кухни, санузлов и технических помещений.</p><span class="calc-field-error" id="calc-rooms-error" hidden></span></div><div class="calc-number-field" data-number-field="distance"><label for="calc-distance">Удалённость от МКАД</label><div class="calc-number-box"><input type="number" id="calc-distance" name="distance" min="0" max="300" step="1" inputmode="numeric" value="50" aria-describedby="calc-distance-hint calc-distance-error"><span>км</span></div><input class="calc-range" type="range" data-range="distance" min="0" max="300" step="1" value="50" aria-label="Удалённость от МКАД, ползунок"><div class="calc-range-ends"><span data-min="distance">0</span><span data-max="distance">300</span></div><p class="calc-field-hint" id="calc-distance-hint">Расстояние по дороге.</p><span class="calc-field-error" id="calc-distance-error" hidden></span></div></div>
+      <fieldset class="calc-option-group calc-storeys"><legend>Этажи и площадь</legend><div class="calc-number-field" data-number-field="floors"><label for="calc-floors">Количество этажей</label><div class="calc-number-box"><input type="number" id="calc-floors" name="floors" min="1" max="5" step="1" inputmode="numeric" value="2" aria-describedby="calc-floors-hint calc-floors-error"><span>эт.</span></div><input class="calc-range" type="range" data-range="floors" min="1" max="5" step="1" value="2" aria-label="Количество этажей, ползунок"><div class="calc-range-ends"><span data-min="floors">1</span><span data-max="floors">5</span></div><p class="calc-field-hint" id="calc-floors-hint">Площадь каждого этажа задайте ниже.</p><span class="calc-field-error" id="calc-floors-error" hidden></span></div><div class="calc-floor-grid" data-floor-controls><div class="calc-number-field" data-number-field="floor-0"><label for="calc-floor-0">Этаж 1</label><div class="calc-number-box"><input type="number" id="calc-floor-0" name="floor-0" min="40" max="500" step="1" inputmode="numeric" value="80" aria-describedby="calc-floor-0-hint calc-floor-0-error"><span>м²</span></div><input class="calc-range" type="range" data-range="floor-0" min="40" max="500" step="1" value="80" aria-label="Этаж 1, ползунок"><div class="calc-range-ends"><span data-min="floor-0">40</span><span data-max="floor-0">500</span></div><p class="calc-field-hint" id="calc-floor-0-hint">Строительная площадь по наружным размерам.</p><span class="calc-field-error" id="calc-floor-0-error" hidden></span></div><div class="calc-number-field" data-number-field="floor-1"><label for="calc-floor-1">Этаж 2</label><div class="calc-number-box"><input type="number" id="calc-floor-1" name="floor-1" min="40" max="500" step="1" inputmode="numeric" value="80" aria-describedby="calc-floor-1-hint calc-floor-1-error"><span>м²</span></div><input class="calc-range" type="range" data-range="floor-1" min="40" max="500" step="1" value="80" aria-label="Этаж 2, ползунок"><div class="calc-range-ends"><span data-min="floor-1">40</span><span data-max="floor-1">500</span></div><p class="calc-field-hint" id="calc-floor-1-hint">Строительная площадь по наружным размерам.</p><span class="calc-field-error" id="calc-floor-1-error" hidden></span></div></div><p class="calc-floor-total" data-floor-total>Общая площадь: 160 м²</p></fieldset>
+      <fieldset class="calc-option-group" id="calculator-materials"><legend>Материал стен</legend><div class="calc-choices calc-choices--material"><label class="calc-choice"><input type="radio" name="material" value="brick"><span><strong>Кирпич</strong></span></label><label class="calc-choice"><input type="radio" name="material" value="aerated" checked><span><strong>Газобетон</strong></span></label><label class="calc-choice"><input type="radio" name="material" value="ceramic"><span><strong>Керамические блоки</strong></span></label><label class="calc-choice"><input type="radio" name="material" value="frame"><span><strong>Каркас</strong></span></label><label class="calc-choice"><input type="radio" name="material" value="timber"><span><strong>Клеёный брус</strong></span></label><label class="calc-choice"><input type="radio" name="material" value="concrete"><span><strong>Монолитный бетон</strong></span></label></div></fieldset>
+      <fieldset class="calc-option-group" id="calculator-packages"><legend>Комплектация</legend><div class="calc-choices calc-choices--package"><label class="calc-choice"><input type="radio" name="package" value="box"><span><strong>Коробка</strong><small>Фундамент, несущие стены, перегородки, перекрытия, лестницы и кровля</small></span></label><label class="calc-choice"><input type="radio" name="package" value="contour"><span><strong>Тёплый контур</strong><small>Коробка, окна, наружные двери, утепление и фасад</small></span></label><label class="calc-choice"><input type="radio" name="package" value="key" checked><span><strong>Под ключ</strong><small>Тёплый контур, внутренняя инженерия, черновая и чистовая отделка</small></span></label></div></fieldset>
+      <fieldset class="calc-option-group" id="calculator-foundation"><legend>Фундамент</legend><div class="calc-choices calc-choices--foundation"><label class="calc-choice"><input type="radio" name="foundation" value="screw" disabled><span><strong>Винтовые сваи</strong><small>С ростверком. В модели доступны каркас и брус до двух этажей</small></span></label><label class="calc-choice"><input type="radio" name="foundation" value="strip"><span><strong>Ленточный</strong><small>По условной длине наружных и внутренних лент</small></span></label><label class="calc-choice"><input type="radio" name="foundation" value="slab" checked><span><strong>Монолитная плита</strong><small>По пятну застройки. Геология и проект обязательны</small></span></label></div><p class="calc-group-note" data-foundation-note>Тип основания уточняется после геологии. Недоступные сочетания исключены в этой модели.</p></fieldset>
+      <fieldset class="calc-option-group"><legend>Срок выполнения работ</legend><div class="calc-number-field" data-number-field="months"><label for="calc-months">Желаемый срок</label><div class="calc-number-box"><input type="number" id="calc-months" name="months" min="2" max="48" step="1" inputmode="numeric" value="8" aria-describedby="calc-months-hint calc-months-error"><span>мес.</span></div><input class="calc-range" type="range" data-range="months" min="2" max="48" step="1" value="8" aria-label="Желаемый срок, ползунок"><div class="calc-range-ends"><span data-min="months">2</span><span data-max="months">48</span></div><p class="calc-field-hint" id="calc-months-hint">От начала работ. Ускоренный график и его стоимость согласовываются отдельно.</p><span class="calc-field-error" id="calc-months-error" hidden></span></div><p class="calc-group-note" data-duration-hint>Обычный срок для этой конфигурации: 7 мес.</p></fieldset>
+      <p class="calc-status" data-calculator-status role="status" aria-live="polite"></p>
+    </form><aside class="calculator-result" id="calculator-result" aria-labelledby="calculator-result-heading"><div class="calc-preview"><img data-calculator-image src="./assets/models/model-02.webp" alt="Одноэтажный светлый дом из газобетона с террасой и огороженным двором" width="1122" height="1402"><span data-calculator-material>Дом из газобетона</span></div><div class="calc-result-body"><h2 id="calculator-result-heading">Базовый бюджет</h2><p class="calc-area-summary" data-calculator-area-summary></p><output class="calc-total" data-calculator-total aria-live="polite" aria-atomic="true">14 608 000 ₽</output><div class="calc-result-meta"><span data-calculator-meter>≈ 91 300 ₽/м²</span><span data-calculator-duration>8 мес. с начала работ</span></div><p class="calc-scope-label" data-calculator-scope>Под ключ · Монолитная плита</p><p class="calc-scenario" data-calculator-scenario></p><div class="calc-budget-warnings" data-calculator-warnings role="status"></div><dl class="calc-breakdown" data-calculator-breakdown><div><dt>Проект и организация</dt><dd>290 000 ₽</dd></div><div><dt>Фундамент</dt><dd>880 000 ₽</dd></div><div><dt>Несущие стены и конструктив</dt><dd>2 052 000 ₽</dd></div><div><dt>Внутренние перегородки</dt><dd>150 000 ₽</dd></div><div><dt>Перекрытия</dt><dd>440 000 ₽</dd></div><div><dt>Межэтажные лестницы</dt><dd>350 000 ₽</dd></div><div><dt>Подъём материалов и леса</dt><dd>97 000 ₽</dd></div><div><dt>Кровля</dt><dd>846 000 ₽</dd></div><div><dt>Окна, утепление и фасад</dt><dd>1 920 000 ₽</dd></div><div><dt>Внутренняя инженерия</dt><dd>1 760 000 ₽</dd></div><div><dt>Черновая отделка</dt><dd>2 320 000 ₽</dd></div><div><dt>Чистовая отделка</dt><dd>3 360 000 ₽</dd></div><div><dt>Доставка и логистика</dt><dd>143 000 ₽</dd></div></dl><details class="calc-formulas"><summary>Объёмы и формулы</summary><dl data-calculator-formulas></dl></details><button class="calc-primary" type="button" data-dialog="consultation" data-calculator-inquiry>Обсудить расчёт <span aria-hidden="true">↗</span></button><button class="calc-download calc-primary" type="button" data-calculator-download>Скачать расчёт PDF <span aria-hidden="true">↓</span></button><p class="calc-estimate-note">Предварительная модель, не смета. Сценарий от ±20% до ±40% допущение для планирования, не статистический интервал и не предел цены. Налоговый режим подрядчика не задан; отдельный НДС не начисляем.</p></div></aside></div>
+    <section class="calc-floor-comparison" aria-labelledby="calc-floor-heading"><h2 id="calc-floor-heading">Как влияет этажность</h2><p data-comparison-description></p><div class="calc-comparison-wrap"><table><thead><tr><th scope="col">Этажей</th><th scope="col">Всего</th><th scope="col">Пятно</th><th scope="col">Базовый бюджет</th></tr></thead><tbody data-calculator-comparison><tr><th scope="row">1</th><td>80 м²</td><td>≈ 80 м²</td><td>7 804 000 ₽</td></tr><tr class="is-current"><th scope="row">2</th><td>160 м²</td><td>≈ 80 м²</td><td>14 608 000 ₽</td></tr><tr><th scope="row">3</th><td>240 м²</td><td>≈ 80 м²</td><td>21 455 000 ₽</td></tr><tr><th scope="row">4</th><td>320 м²</td><td>≈ 80 м²</td><td>28 344 000 ₽</td></tr><tr><th scope="row">5</th><td>400 м²</td><td>≈ 80 м²</td><td>35 271 000 ₽</td></tr></tbody></table></div><p>При одинаковой общей площади один этаж может быть дороже двух: фундамент и крыша больше. Третий этаж добавляет стены, перекрытия, лестницу и подъём материалов. Универсального процента разницы нет.</p></section>
+    <section class="calculator-prices" id="calculator-prices" aria-labelledby="calculator-prices-heading"><div class="calc-prices-heading"><h2 id="calculator-prices-heading">ЦЕНЫ</h2><p>Что считаем.<br>На какие данные опираемся.</p></div><p class="calc-price-intro">Ставки модели для простого дома в Московской области. Материалы и работы вместе. Открытые предложения строителей приведены ниже с составом работ: это цены «от», а не подтверждённая средняя по рынку.</p><div class="calc-price-table-wrap"><table class="calc-price-table"><caption>Расчётные ставки по материалам</caption><thead><tr><th scope="col">Материал</th><th scope="col">Несущая часть<small>за м² стены</small></th><th scope="col">Тёплый контур<small>добавка за м² дома</small></th></tr></thead><tbody><tr data-price-material="brick"><th scope="row">Кирпич</th><td>12 000 ₽</td><td>+ 14 000 ₽</td></tr><tr data-price-material="aerated" class="is-current"><th scope="row">Газобетон</th><td>9 500 ₽</td><td>+ 12 000 ₽</td></tr><tr data-price-material="ceramic"><th scope="row">Керамические блоки</th><td>11 500 ₽</td><td>+ 13 000 ₽</td></tr><tr data-price-material="frame"><th scope="row">Каркас</th><td>8 500 ₽</td><td>+ 12 000 ₽</td></tr><tr data-price-material="timber"><th scope="row">Клеёный брус</th><td>35 000 ₽</td><td>+ 5 000 ₽</td></tr><tr data-price-material="concrete"><th scope="row">Монолитный бетон</th><td>15 000 ₽</td><td>+ 16 000 ₽</td></tr></tbody></table><p class="calc-table-note">В обеих колонках указаны допущения модели, подобранные по общему бюджету опубликованных комплектаций. Это не прямые расценки подрядчиков на кладку. Приведённая площадь стен = сумма периметров этажей × 3 м, без вычета проёмов; ставка включает запас на внутренние несущие элементы и узлы. Перегородки, фундамент, перекрытия и кровля считаются отдельно.</p></div><div class="calc-price-groups"><section class="calc-price-group calc-price-group--foundation"><h3>Фундамент</h3><dl><div><dt>Винтовые сваи с ростверком<small>за м² пятна; допущение модели</small></dt><dd>4 500 ₽</dd></div><div><dt>Монолитная плита<small>за м² пятна; в источнике от 8 000 ₽/м²</small></dt><dd>10 000 ₽</dd></div><div><dt>Ленточный<small>за пог. м; в источнике от 7 000 ₽/пог. м</small></dt><dd>10 000 ₽</dd></div><div><dt>Поправка на этажность<small>плита и лента: от 1 до 5 этажей; допущение</small></dt><dd>×1 / ×1,1 / ×1,25 / ×1,45 / ×1,7</dd></div></dl><p>Пятно условно равно площади самого большого этажа. Лента = наружный периметр + две пересекающиеся внутренние ленты. Поправка: бюджетное допущение, не расчёт нагрузок. Состав и пригодность основания определяет проект по геологии.</p></section><section class="calc-price-group"><h3>Конструкции</h3><dl><div><dt>Железобетонное перекрытие<small>за м²; середина опубликованного диапазона от 4 500 до 6 500 ₽</small></dt><dd>5 500 ₽</dd></div><div><dt>Деревянное перекрытие<small>за м², каркас и брус; допущение</small></dt><dd>3 500 ₽</dd></div><div><dt>Межэтажная лестница<small>за переход на следующий этаж; допущение, без декоративной отделки</small></dt><dd>350 000 ₽</dd></div><div><dt>Подъём материалов и леса<small>за м² стен выше первого этажа; допущение</small></dt><dd>900 ₽</dd></div><div><dt>Внутренние перегородки<small>за м²; по 20 м² на комнату после первой; допущение планировки</small></dt><dd>2 500 ₽</dd></div></dl><p>Межэтажные перекрытия = сумма площадей этажей выше первого. Для свай и ленты добавляется перекрытие первого этажа. У плиты оно уже учтено в основании. Лестниц требуется на одну меньше, чем этажей.</p></section><section class="calc-price-group"><h3>Кровля и отделка</h3><dl><div><dt>Холодная кровля целиком<small>за м² скатов; ориентир «Рифей Б»</small></dt><dd>7 400 ₽</dd></div><div><dt>Внутренняя инженерия<small>за м² дома; ориентир B&P STROY</small></dt><dd>11 000 ₽</dd></div><div><dt>Черновая отделка<small>за м² дома; стартовый прайс КСУ Нордвест</small></dt><dd>14 500 ₽</dd></div><div><dt>Чистовая отделка<small>за м² дома; стартовый прайс КСУ Нордвест</small></dt><dd>21 000 ₽</dd></div></dl><p>Инженерия и оба вида внутренней отделки добавляются только в «Под ключ». Окна, наружные двери, утепление крыши и пола, фасад учтены в строке тёплого контура. Черновая отделка не дублирует инженерию.</p></section><section class="calc-price-group"><h3>Проект и доставка</h3><dl><div><dt>Проектирование<small>за м² дома; допущение</small></dt><dd>1 500 ₽</dd></div><div><dt>Организация работ<small>за объект; допущение</small></dt><dd>50 000 ₽</dd></div><div><dt>Базовая логистика<small>за объект, до 20 км от МКАД; допущение</small></dt><dd>90 000 ₽</dd></div><div><dt>Удалённость сверх 20 км<small>за км на весь проект, не за одну машину; допущение</small></dt><dd>1 400 ₽</dd></div><div><dt>Объём сверх 100 м²<small>за дополнительный м² дома; допущение</small></dt><dd>180 ₽</dd></div></dl><p>Рейсы и техника без спецификации неизвестны. Логистика: укрупнённый бюджет, не тариф перевозчика. При ускорении не начисляем выдуманный процент: доплата оценивается по согласованному графику и пока не входит в сумму.</p></section></div><section class="calc-evidence" aria-labelledby="calc-evidence-heading"><h3 id="calc-evidence-heading">Открытые ориентиры</h3><p>Проверено 24.10.2026. Не усредняем коробку без перегородок, контур без фундамента и дом с отделкой: состав разный. Ниже приведены исходные предложения для сравнения, а не оферта нашей компании.</p><div class="calc-source-list"><article><h4><a href="https://vedares.ru/stroitelstvo/" target="_blank" rel="noopener noreferrer">VEDARES ↗</a></h4><p>Коробка с фундаментом и кровлей: газобетон от 30 000 ₽/м², кирпич и керамоблок от 34 000 ₽/м². Тёплый контур от 42 000 и 48 000 ₽/м² соответственно. Перегородки в коробку не включены.</p></article><article><h4><a href="https://ugsdom.ru/ceny/dom-pod-klyuch-moskovskaya-oblast" target="_blank" rel="noopener noreferrer">ЮржилСервис ↗</a></h4><p>Для 150 м²: газобетонный тёплый контур с фундаментом 48 000 ₽/м²; каркасный 38 000 ₽/м² без фундамента. Инженерия и отделка отдельно.</p></article><article><h4><a href="https://www.ksu-nordwest.ru/price/" target="_blank" rel="noopener noreferrer">КСУ Нордвест ↗</a></h4><p>Коробка с фундаментом, крышей и перегородками: газобетон от 44 500, кирпич от 45 000, керамоблок от 46 500 ₽/м². Черновая отделка с материалами от 14 500, чистовая от 21 000 ₽/м²; инженерия от 8 500 ₽/м².</p></article><article><h4><a href="https://rubkoff.ru/catalog/doma-iz-kleenogo-brusa/" target="_blank" rel="noopener noreferrer">Рубкофф ↗</a></h4><p>Клеёный брус: холодный контур от 65 000 ₽/м², тёплый от 70 000 ₽/м². Включены фундамент, кровля и логистика; инженерия и внутренняя отделка не входят.</p></article><article><h4><a href="https://oporadoma-fundament-msk.ru/" target="_blank" rel="noopener noreferrer">Опора дома ↗</a></h4><p>Материалы и работы: плита от 8 000 ₽/м², лента от 7 000 ₽/пог. м. Это стартовые предложения, а не расчёт несущей способности основания.</p></article><article><h4><a href="https://tgv-stroy.ru/uslugi/ustrojstvo-perekrytij/monolitnoe/" target="_blank" rel="noopener noreferrer">ТГВ строй ↗</a></h4><p>Монолитное межэтажное перекрытие под ключ: ориентир от 4 500 до 6 500 ₽/м². В модели взята середина этого диапазона 5 500 ₽/м².</p></article><article><h4><a href="https://rifeyb.ru/uslugi/krovlya/" target="_blank" rel="noopener noreferrer">Рифей Б ↗</a></h4><p>Холодная кровля со стропилами, металлочерепицей, водостоком и подшивкой: опубликован ориентир 7 400 ₽/м² ската с материалами и работой. Утепление в модели добавляется в тёплом контуре.</p></article><article><h4><a href="https://bpstroydom.ru/blog/skolko-stoit-inzheneriya-doma" target="_blank" rel="noopener noreferrer">B&P STROY ↗</a></h4><p>Комплекс инженерных систем от 11 000 ₽/м². Принят как ориентир внутренней инженерии; наружные сети и премиальное оборудование в наш расчёт не включены.</p></article><article><h4><a href="https://doma-karkas.ru/articles/odnoetazhnyy-ili-dvukhetazhnyy-dom-chto-deshevle-pri-odinakovoy-ploshchadi/" target="_blank" rel="noopener noreferrer">Интел Групп ↗</a></h4><p>Сравнение одинаковой общей площади объясняет возможную экономию двух этажей меньшей площадью фундамента и кровли. Процент экономии из статьи не используется как коэффициент калькулятора.</p></article></div></section></section><details class="calculator-method"><summary>Границы расчёта и допущения</summary><div><p>Модель: прямоугольные этажи с пропорциями 1:1,25 и высотой 3 м. Их площади задаются отдельно и суммируются. Крыша с уклоном 30° и свесами 0,5 м. Площадь дома указана по строительным размерам, приблизительно по наружным размерам, включая лестничную зону. Полезная внутренняя площадь будет меньше. Фундамент и кровля условно считаются по наибольшему этажу; подробная геометрия уступов, консолей и сложной крыши требует проекта.</p><p>Несущая часть считается по приведённой площади стен, тёплый контур учитывается по общей площади. Число комнат задаёт условную площадь перегородок; это не готовая планировка. Корректировки доступных значений: ограничения модели, не строительные нормы. Этапы округляются до 1 000 ₽ и складываются без скрытых начислений.</p><p>Плановый срок рассчитан условно: для 150 м² «Под ключ», один этаж: газобетон 6, кирпич 8, керамоблок 7, каркас 4, брус 6, монолит 9 месяцев. Масштабируем его на (общая площадь / 150)^0,45 и добавляем 0,8 месяца за следующий этаж; для коробки множитель 0,65, для контура 0,83. Сроки не гарантированы. Если желаемый срок меньше планового, ускорение требует отдельной оценки и в базовый бюджет не включено.</p><p>Сценарий изменения бюджета: ±20%, для трёх этажей, монолита или площади вне диапазона от 80 до 300 м² ±30%, для 4 или 5 этажей ±40%. Это допущение чувствительности модели, а не оценка рыночного разброса или гарантия попадания в диапазон.</p><p>Не включены участок, геология и геодезия, сложные грунты и рельеф, внешние сети, скважина, септик, газификация, мебель, техника, благоустройство, террасы и гаражи. Внутренняя инженерия: типовые электрика, вода, канализация и отопление, без премиальной автоматики и кондиционирования. Для бруса единая ставка внутренней отделки сохранена как консервативный бюджет полов, потолков и мокрых зон; индивидуальная смета может отличаться. Для трёх этажей и монолита сопоставимых публичных смет недостаточно; результат остаётся модельным.</p></div></details>
+  </main><div class="calc-mobile-summary" data-calculator-mobile-summary><span data-calculator-mobile-total>14 608 000 ₽</span><a href="/calculator/#calculator-result">К расчёту ↓</a></div><footer class="construction-footer"><div><a class="construction-footer-logo" href="/">ТВОЙ ДОМ</a><p>От первой идеи до своего дома.</p></div><a href="/construction/">Все дома и бани ↗</a><a href="/privacy/">Политика конфиденциальности</a><span class="construction-footer-demo">Тестовая версия · Контент и параметры приведены для примера</span></footer><dialog id="consultation" class="contact-dialog" aria-labelledby="consultation-title">
+      <button class="dialog-close" data-close aria-label="Закрыть">×</button>
+      <div data-contact-entry>
+      <span class="eyebrow">Первый шаг</span><h2 id="consultation-title">ОБСУДИМ<br>ВАШ ДОМ?</h2>
+      <p class="dialog-description">Оставьте удобный способ связи.</p>
+      <section class="contact-calculation" data-contact-calculation hidden><div class="contact-calculation-heading"><h3>Ваш расчёт дома</h3><button type="button" class="contact-calculation-reset" data-contact-calculation-reset>Сброс</button></div><dl data-contact-calculation-rows></dl><p data-contact-calculation-warning></p></section>
+      <p class="contact-calculation-status" data-contact-calculation-status role="status" hidden></p>
+      <form data-contact-form>
+        <input type="hidden" name="calculation" data-contact-calculation-data>
+        <label>Как к вам обращаться<input name="name" autocomplete="given-name" placeholder="Ваше имя" required maxlength="80"></label>
+        <label>Телефон или Telegram<input name="contact" autocomplete="tel" placeholder="+7 … или @username" required minlength="4" maxlength="100"></label>
+        <label>Пару слов о доме <span>(необязательно)</span><textarea name="comment" rows="2" maxlength="1000" placeholder="Что вы представляете?"></textarea></label>
+        <label class="contact-consent"><input type="checkbox" name="personal_data_consent" required value="25.10.2026"><span>Даю <a href="/consent/" target="_blank" rel="noopener noreferrer">согласие на обработку персональных данных</a> для ответа на мой запрос.</span></label>
+        <p class="contact-privacy-note">Информация об обработке: <a href="/privacy/" target="_blank" rel="noopener noreferrer">политика конфиденциальности</a>. В тестовой версии документы и отметка согласия демонстрационные; реальные реквизиты оператора ещё не заданы.</p>
+        <p class="demo-note">Это демонстрационная форма. Контакты пока никуда не отправляются.</p>
+        <button class="solid-button" type="submit">Записаться <span aria-hidden="true">↗</span></button>
+      </form>
+      </div>
+      <section class="contact-success" data-contact-success hidden tabindex="-1" aria-labelledby="contact-success-title">
+        <svg class="contact-success-icon" aria-hidden="true" viewBox="0 0 64 64" fill="none"><path d="M9 31 32 12l23 19v24H9V31Z" stroke="currentColor" stroke-width="2"/><path d="m22 35 7 7 15-16" stroke="currentColor" stroke-width="3"/></svg>
+        <h2 id="contact-success-title">Спасибо<br>за обращение</h2>
+        <p class="contact-success-message">В ближайшее время менеджер с вами свяжется</p>
+        <p class="demo-note">Тестовый режим: это пример подтверждения. Данные пока не отправляются.</p>
+        <button class="solid-button" type="button" data-success-close>Вернуться на сайт <span aria-hidden="true">↗</span></button>
+      </section>
+    </dialog>
+    <dialog id="manager" class="contact-dialog manager-dialog" aria-labelledby="manager-title">
+      <button class="dialog-close" data-close aria-label="Закрыть">×</button>
+      <span class="eyebrow">На связи</span><h2 id="manager-title">ДАВАЙТЕ<br>ПОГОВОРИМ</h2>
+      <p class="dialog-description">Тестовая версия: ниже демонстрационные контакты. Перед запуском заменим их на контакты компании.</p>
+      <ul class="contact-options"><li><span>Telegram</span><span>@tvoydom_demo</span></li><li><span>Телефон</span><span>+7 (000) 000 00 00</span></li><li><span>Почта</span><span>hello@tvoydom.example</span></li></ul>
+    </dialog></div><noscript><p style="padding:20px;font-family:Arial">Для анимаций, калькулятора и формы обратной связи включите JavaScript</p></noscript><script type="module" src="./app/main.js"></script></body></html>

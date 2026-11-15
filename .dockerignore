@@ -1,0 +1,17 @@
+**
+!Dockerfile
+!.dockerignore
+!package.json
+!src/
+!src/**
+!scripts/
+!scripts/**
+!admin/
+!admin/**
+!tests/
+!tests/**
+!dist/
+!dist/assets/
+!dist/assets/**
+!deploy/
+!deploy/nginx.conf

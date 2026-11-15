@@ -1,0 +1,53 @@
+.about-main{padding:160px var(--gutter) 80px}
+.about-intro{display:grid;grid-template-columns:1.25fr 1fr;gap:8vw;align-items:end;margin:15px 0 55px}
+.about-intro h1{font-family:var(--display);font-size:clamp(50px,7.2vw,144px);font-weight:800;letter-spacing:-.055em;line-height:.94;margin:0}
+.about-intro p{font-size:clamp(18px,1.6vw,26px);line-height:1.4;letter-spacing:-.025em;max-width:42ch;margin:0 0 25px}
+.about-intro a,.about-director-link{display:inline-flex;gap:30px;align-items:center;font-size:16px;line-height:1.5}
+.about-intro a:hover,.about-director-link:hover{text-decoration:underline;text-underline-offset:6px}
+.about-hero-photo{margin:0;position:relative;overflow:hidden;border-radius:28px;aspect-ratio:2.7;background:var(--olive)}
+.about-hero-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 31%}
+.about-hero-photo figcaption{position:absolute;left:24px;bottom:24px;background:var(--paper);color:var(--olive);padding:12px 16px;font-size:15px;line-height:1.4;max-width:calc(100% - 48px)}
+.about-history{display:grid;grid-template-columns:.9fr 1.2fr;gap:9vw;margin:110px 0}
+.about-history,.about-director,.about-office{scroll-margin-top:120px}
+.about-history h2,.about-office h2{font-size:clamp(34px,4.2vw,76px);font-weight:400;letter-spacing:-.045em;line-height:1.05;margin:0}
+.about-history-intro p{font-size:18px;line-height:1.5;max-width:32ch;margin:28px 0 0}
+.about-timeline{list-style:none;margin:0;padding:0;display:grid;gap:38px}
+.about-timeline li{display:grid;grid-template-columns:90px minmax(0,1fr);gap:25px}
+.about-year{font-size:23px;line-height:1.2;letter-spacing:-.035em}
+.about-timeline h3{font-size:26px;font-weight:400;letter-spacing:-.03em;line-height:1.15;margin:0 0 13px}
+.about-timeline p,.about-principles p{font-size:17px;line-height:1.55;margin:0;max-width:52ch}
+.about-principles{margin:0 calc(var(--gutter) * -1);padding:72px var(--gutter) 80px;background:var(--olive);color:var(--paper)}
+.about-principles>h2{font-family:var(--display);font-size:clamp(42px,6.4vw,112px);font-weight:800;line-height:.95;letter-spacing:-.05em;margin:0 0 60px}
+.about-principles-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px 9vw;max-width:1500px}
+.about-principles h3{font-size:clamp(25px,2.3vw,40px);font-weight:400;letter-spacing:-.035em;line-height:1.1;margin:0 0 18px}
+.about-materials{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:80px 0 110px}
+.about-materials figure{margin:0;min-width:0}
+.about-materials img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 29%;border-radius:24px}
+.about-materials figcaption{font-size:16px;line-height:1.4;margin-top:16px}
+.about-director{display:grid;grid-template-columns:1fr 1fr;gap:7vw;align-items:center;margin:0 0 120px}
+.about-director-photo{margin:0;min-width:0}
+.about-director-photo img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:26px}
+.about-director-copy h2{font-family:var(--display);font-size:clamp(38px,5vw,94px);font-weight:800;line-height:.98;letter-spacing:-.045em;margin:0}
+.about-director-role{font-size:16px!important;line-height:1.4!important;margin:18px 0 30px!important}
+.about-director-copy p{font-size:18px;line-height:1.55;max-width:52ch;margin:0 0 20px}
+.about-director-copy .about-portrait-note{font-size:13px;line-height:1.5;margin:18px 0 0}
+.about-director-link{margin-top:12px}
+.about-office{display:grid;grid-template-columns:1fr 1.12fr;gap:6vw;align-items:center;padding:65px 0 55px}
+.about-office address{font-style:normal;display:grid;gap:10px;font-size:20px;line-height:1.35;margin-top:30px}
+.about-office address strong{font-weight:400}
+.about-hours{font-size:15px;line-height:1.5;max-width:40ch;margin:18px 0 0}
+.about-office-contacts{display:flex;flex-direction:column;align-items:start;gap:12px;margin:24px 0}
+.about-office-contacts a{font-size:20px;line-height:1.3;letter-spacing:-.02em}
+.about-office-demo{font-size:13px;line-height:1.5;max-width:40ch;margin:18px 0 0}
+.about-office-map{margin:0;min-width:0}
+.about-office-map>a{position:relative;display:block;aspect-ratio:1.25;overflow:hidden;background:var(--sand);border-radius:24px}
+.about-office-map img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(.5) sepia(.25);transition:filter .3s,transform .6s}
+.about-office-map>a:hover img{filter:none;transform:scale(1.025)}
+.about-map-action{position:absolute;right:18px;bottom:18px;padding:12px 16px;background:var(--paper);color:var(--olive);font-size:14px}
+.about-office-map figcaption{margin-top:12px;font-size:13px;line-height:1.5}
+.about-demo-note{font-size:16px;line-height:1.55;max-width:70ch;margin:40px 0 0}
+.about-reveal.is-visible{animation:about-enter .7s cubic-bezier(.22,1,.36,1) both}
+@keyframes about-enter{from{opacity:.25;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1000px){.about-intro{gap:5vw}.about-intro h1{font-size:7.2vw}.about-intro p{font-size:18px}.about-history{gap:5vw}.about-timeline li{grid-template-columns:75px 1fr;gap:15px}.about-year{font-size:20px}.about-director{gap:5vw;align-items:start}.about-director-copy p{font-size:17px}.about-director-copy h2{font-size:5.3vw}.about-office{gap:4vw}.about-office h2{font-size:4.6vw}}
+@media(max-width:700px){.site-header .wordmark{flex-shrink:0}.site-header nav{flex-wrap:wrap;justify-content:flex-end;min-width:0}.about-main{padding-top:145px;padding-bottom:60px}.about-intro{grid-template-columns:1fr;gap:28px;margin:0 0 35px}.about-intro h1{font-size:11.8vw}.about-intro p{font-size:18px;max-width:40ch;margin-bottom:22px}.about-hero-photo{aspect-ratio:1.25;border-radius:24px}.about-hero-photo figcaption{font-size:13px;left:14px;bottom:14px;max-width:calc(100% - 28px);padding:9px 12px}.about-history{grid-template-columns:1fr;gap:38px;margin:65px 0}.about-history h2,.about-office h2{font-size:10vw}.about-history-intro p{font-size:17px;margin-top:22px;max-width:36ch}.about-timeline{gap:30px}.about-timeline li{grid-template-columns:68px 1fr;gap:18px}.about-timeline h3{font-size:24px}.about-timeline p{font-size:16px;line-height:1.5}.about-year{font-size:18px}.about-principles{padding-top:50px;padding-bottom:55px}.about-principles>h2{font-size:12vw;margin-bottom:38px}.about-principles-grid{grid-template-columns:1fr;gap:32px}.about-principles h3{font-size:27px}.about-principles p{font-size:16px}.about-materials{gap:16px;margin:55px 0 65px}.about-materials img{aspect-ratio:.8;border-radius:18px}.about-materials figcaption{font-size:13px;line-height:1.45;margin-top:12px}.about-director{grid-template-columns:1fr;gap:32px;margin-bottom:65px}.about-director-photo img{border-radius:24px}.about-director-copy h2{font-size:11.5vw}.about-director-copy p{font-size:17px;line-height:1.55}.about-director-role{margin-bottom:26px!important}.about-office{grid-template-columns:1fr;gap:35px;padding-top:20px;padding-bottom:25px}.about-office address{font-size:18px;margin-top:25px}.about-hours{font-size:14px}.about-office-contacts a{font-size:18px}.about-office-map>a{aspect-ratio:1.2}.about-demo-note{margin-top:30px;font-size:16px}}
+@media(prefers-reduced-motion:reduce){.about-reveal.is-visible{animation:none}.about-office-map img{transition:none}}
